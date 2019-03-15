@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: paulg
  * Date: 15/03/2019
- * Time: 10:39
+ * Time: 14:22
  */
 
-class UsersManager
+class CommentsManager
 {
     protected $db;
 
@@ -23,22 +23,22 @@ class UsersManager
         $this->db = $db;
     }
 
-    public function getAccount($infosAccount)
+    public function addComment($pseudo, $content)
     {
 
     }
 
-    public function addAccount($infoAccount, $password)
+    public function getComment($infoComment)
     {
 
     }
 
-    public function deleteAccount($infoAccount, $password)
+    public function getCommentsList()
     {
 
     }
 
-    public function existAccount($infoAccount, $password)
+    public function getUserComments($infosUser)
     {
 
     }

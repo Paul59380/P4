@@ -6,7 +6,7 @@
  * Time: 10:43
  */
 
-class PDOFactory  //Pattern Factory
+class PDOFactory  //Pattern Factory // Test
 {
     public static function connectedAtDataBase()
     {

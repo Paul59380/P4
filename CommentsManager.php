@@ -42,4 +42,9 @@ class CommentsManager
     {
 
     }
+
+    public function update($infoComment)
+    {
+
+    }
 }

@@ -44,6 +44,11 @@ class Comment
 
     }
 
+    public function updateComment()
+    {
+
+    }
+
     /**
      * @param mixed $id
      */

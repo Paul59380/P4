@@ -13,6 +13,7 @@ class Comment
     protected $id_news;
     protected $contains_comment;
     protected $date_create;
+    protected $user;
 
     public function __construct($data)
     {
@@ -25,7 +26,25 @@ class Comment
             $method = 'set' . ucfirst($key);
             $this->$method($value);
         }
+
+        $db = PDOFactory::connectedAtDataBase();
+        $userManager = new UserManager($db);
+        $this->user = $userManager->getUser($this->id_user);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
     public function writeComment()
     {
 

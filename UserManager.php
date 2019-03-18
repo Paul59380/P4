@@ -6,13 +6,15 @@
  * Time: 10:39
  */
 
-class UsersManager
+class UserManager
 {
     protected $db;
+    private $user;
 
     public function __construct(PDO $db)
     {
         $this->db = $db;
+        $this->user = [];
     }
 
     /**
@@ -23,15 +25,19 @@ class UsersManager
         $this->db = $db;
     }
 
-    public function getAccount($infosAccount)
+    public function getUser($userId)
     {
-        $q = $this->db->query('SELECT * FROM users WHERE id = ' .$infosAccount);
-
-        while($data = $q->fetch(PDO::FETCH_ASSOC))
-        {
-            $account = new Users($data);
+        if (isset($this->user[$userId])) {
+            return $this->user[$userId];
         }
-        return $account;
+
+        $q = $this->db->query('SELECT * FROM users WHERE id = ' . $userId);
+
+        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User($data);
+        }
+        $this->user[$userId] = $user;
+        return $user;
     }
 
     public function addUserAccount($infoAccount, $password)
@@ -39,7 +45,7 @@ class UsersManager
         $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
         $q->execute(array(
             ":infosAccount" => $infoAccount,
-            ":password_account" =>$password,
+            ":password_account" => $password,
             ":id_profil" => 2
         ));
     }
@@ -49,7 +55,7 @@ class UsersManager
         $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
         $q->execute(array(
             ":infosAccount" => $infoAccount,
-            ":password_account" =>$password,
+            ":password_account" => $password,
             ":id_profil" => 3
         ));
     }
@@ -64,3 +70,23 @@ class UsersManager
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@
  * Time: 10:32
  */
 
-class Users
+class User
 {
     protected $id;
     protected $id_profil;

@@ -26,22 +26,6 @@ class Comment
             $this->$method($value);
         }
     }
-
-    public function showComments($infoComment)
-    {
-
-    }
-
-    public function showComment($infoComment)
-    {
-
-    }
-
-    public function showUserComment($infoComment, $infoUser)
-    {
-
-    }
-
     public function writeComment()
     {
 

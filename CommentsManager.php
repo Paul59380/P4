@@ -40,7 +40,14 @@ class CommentsManager
 
     public function getCommentsList()
     {
+        $comments = [];
 
+        $q = $this->db->query('SELECT * FROM comments');
+        while($data = $q ->fetch(PDO::FETCH_ASSOC))
+        {
+            $comments[] = new Comment($data);
+        }
+        return $comments;
     }
 
     public function getUserComments($infosUser)

@@ -9,18 +9,21 @@
 class Users
 {
     protected $id;
-    protected $idProfile;
+    protected $id_profil;
     protected $pseudo;
     protected $password;
 
     public function __construct($data)
     {
-
+        $this->hydrate($data);
     }
 
     public function hydrate(array $data)
     {
-
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            $this->$method($value);
+        }
     }
 
     public function readNews($news)
@@ -38,14 +41,14 @@ class Users
 
     }
 
-    public function setIdProfile($idProfil)
+    public function setId_profil($idProfil)
     {
-        $this->idProfil = $idProfil;
+        $this->id_profil = $idProfil;
     }
 
-    public function getIdProfile()
+    public function getIdProfil()
     {
-        return $this->idProfile;
+        return $this->id_profil;
     }
 
     public function setId($id)

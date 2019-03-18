@@ -25,12 +25,33 @@ class UsersManager
 
     public function getAccount($infosAccount)
     {
+        $q = $this->db->query('SELECT * FROM users WHERE id = ' .$infosAccount);
 
+        while($data = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $account = new Users($data);
+        }
+        return $account;
     }
 
-    public function addAccount($infoAccount, $password)
+    public function addUserAccount($infoAccount, $password)
     {
+        $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
+        $q->execute(array(
+            ":infosAccount" => $infoAccount,
+            ":password_account" =>$password,
+            ":id_profil" => 2
+        ));
+    }
 
+    public function addVisitorAccount($infoAccount, $password)
+    {
+        $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
+        $q->execute(array(
+            ":infosAccount" => $infoAccount,
+            ":password_account" =>$password,
+            ":id_profil" => 3
+        ));
     }
 
     public function deleteAccount($infoAccount, $password)

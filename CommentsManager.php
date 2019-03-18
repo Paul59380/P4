@@ -30,7 +30,12 @@ class CommentsManager
 
     public function getComment($infoComment)
     {
-
+        $q = $this->db->query('SELECT * FROM comments WHERE id = '.$infoComment);
+        while($data = $q ->fetch(PDO::FETCH_ASSOC))
+        {
+            $comment = new Comment($data);
+        }
+        return $comment;
     }
 
     public function getCommentsList()

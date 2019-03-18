@@ -9,22 +9,25 @@
 class Comment
 {
     protected $id;
-    protected $idUser;
-    protected $idNews;
-    protected $comment;
-    protected $dateCreate;
+    protected $id_user;
+    protected $id_news;
+    protected $contains_comment;
+    protected $date_create;
 
     public function __construct($data)
     {
-
+        $this->hydrate($data);
     }
 
     public function hydrate(array $data)
     {
-
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            $this->$method($value);
+        }
     }
 
-    public function showComments()
+    public function showComments($infoComment)
     {
 
     }
@@ -63,54 +66,54 @@ class Comment
     }
 
     /**
-     * @param mixed $idUser
+     * @param mixed $id_user
      */
-    public function setIdUser($idUser)
+    public function setId_user($id_user)
     {
-        $this->idUser = $idUser;
+        $this->id_user = $id_user;
     }
 
     public function getIdUser()
     {
-        return $this->idUser;
+        return $this->id_user;
     }
 
     /**
-     * @param mixed $idNews
+     * @param mixed $id_news
      */
-    public function setIdNews($idNews)
+    public function setId_news($id_news)
     {
-        $this->idNews = $idNews;
+        $this->id_news = $id_news;
     }
 
     public function getIdNews()
     {
-        return $this->idNews;
+        return $this->id_news;
     }
 
     /**
      * @param mixed $comment
      */
-    public function setComment($comment)
+    public function setContains_comment($comment)
     {
-        $this->comment = $comment;
+        $this->contains_comment = $comment;
     }
 
-    public function getComment()
+    public function getContainsComment()
     {
-        return $this->comment;
+        return $this->contains_comment;
     }
 
     /**
-     * @param mixed $dateCreate
+     * @param mixed $date_create
      */
-    public function setDateCreate($dateCreate)
+    public function setDate_create($date_create)
     {
-        $this->dateCreate = $dateCreate;
+        $this->date_create = $date_create;
     }
 
     public function getDateCreate()
     {
-        return $this->dateCreate;
+        return $this->date_create;
     }
 }

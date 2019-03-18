@@ -33,13 +33,19 @@ class NewsManager
 
     public function getNews($infoNews)
     {
-
+        $q = $this->db->query('SELECT * FROM news WHERE id = '. $infoNews);
+        while($data = $q ->fetch(PDO::FETCH_ASSOC))
+        {
+            $news = new News($data);
+        }
+            return $news;
     }
 
     public function getListNews()
     {
         $news = [];
         $q = $this->db->query('SELECT * FROM news');
+
         while($data = $q ->fetch(PDO::FETCH_ASSOC))
         {
             $news[] = new News($data);

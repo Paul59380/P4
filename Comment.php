@@ -14,6 +14,7 @@ class Comment
     protected $contains_comment;
     protected $date_create;
     protected $user;
+    protected $news;
 
     public function __construct($data)
     {
@@ -30,6 +31,9 @@ class Comment
         $db = PDOFactory::connectedAtDataBase();
         $userManager = new UserManager($db);
         $this->user = $userManager->getUser($this->id_user);
+
+        $newsMangager = new NewsManager($db);
+        $this->news = $newsMangager->getNews($this->id_news);
     }
 
     /**
@@ -43,6 +47,16 @@ class Comment
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    public function getNews()
+    {
+        return $this->news;
+    }
+
+    public function setNews($news)
+    {
+        $this->user = $news;
     }
 
     public function writeComment()

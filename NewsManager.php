@@ -9,6 +9,7 @@
 class NewsManager
 {
     protected $db;
+    private $news;
 
     /**
      * @param mixed $db
@@ -16,6 +17,7 @@ class NewsManager
     public function __construct(PDO $db)
     {
         $this->db = $db;
+        $this->news = [];
     }
 
     /**
@@ -33,12 +35,18 @@ class NewsManager
 
     public function getNews($infoNews)
     {
+        if(isset($this->news[$infoNews])){
+            return $this->news[$infoNews];
+        }
+
         $q = $this->db->query('SELECT * FROM news WHERE id = '. $infoNews);
         while($data = $q ->fetch(PDO::FETCH_ASSOC))
         {
             $news = new News($data);
         }
-            return $news;
+
+        $this->news[$infoNews] = $news;
+        return $news;
     }
 
     public function getListNews()
@@ -51,10 +59,5 @@ class NewsManager
             $news[] = new News($data);
         }
         return $news;
-    }
-
-    public function getCommentsNews($infosNews, $infosComment)
-    {
-
     }
 }

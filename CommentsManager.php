@@ -50,11 +50,6 @@ class CommentsManager
         return $comments;
     }
 
-    public function getUserComments($infosUser)
-    {
-
-    }
-
     public function update($infoComment)
     {
 

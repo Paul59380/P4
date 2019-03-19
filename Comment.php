@@ -59,16 +59,6 @@ class Comment
         $this->user = $news;
     }
 
-    public function writeComment()
-    {
-
-    }
-
-    public function updateComment()
-    {
-
-    }
-
     /**
      * @param mixed $id
      */

@@ -23,9 +23,17 @@ class CommentsManager
         $this->db = $db;
     }
 
-    public function addComment($pseudo, $content)
+    public function addComment($idUser, $urlValue, $content)
     {
 
+        $q = $this->db->prepare('INSERT INTO comments(id_user, id_news, contains_comment) 
+        VALUE (:id_user, :url_Value, :content)');
+
+        $q->execute(array(
+            ":id_user" => $idUser,
+            ":url_Value" => $urlValue,
+            ":content" => $content
+        ));
     }
 
     public function getComment($infoComment)

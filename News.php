@@ -23,7 +23,7 @@ class News
     {
         foreach ($data as $key => $value) {
             $method = 'set' . ucfirst($key);
-                $this->$method($value);
+            $this->$method($value);
         }
     }
 

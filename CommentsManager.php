@@ -38,9 +38,8 @@ class CommentsManager
 
     public function getComment($infoComment)
     {
-        $q = $this->db->query('SELECT * FROM comments WHERE id = '.$infoComment);
-        while($data = $q ->fetch(PDO::FETCH_ASSOC))
-        {
+        $q = $this->db->query('SELECT * FROM comments WHERE id = ' . $infoComment);
+        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $comment = new Comment($data);
         }
         return $comment;
@@ -51,8 +50,7 @@ class CommentsManager
         $comments = [];
 
         $q = $this->db->query('SELECT * FROM comments ORDER BY date_create DESC ');
-        while($data = $q ->fetch(PDO::FETCH_ASSOC))
-        {
+        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
         return $comments;
@@ -60,7 +58,7 @@ class CommentsManager
 
     public function update($infoComment)
     {
-        $q = $this->db->prepare('UPDATE comments SET date_create = NOW() WHERE id ='.$infoComment);
+        $q = $this->db->prepare('UPDATE comments SET date_create = NOW() WHERE id =' . $infoComment);
         $q->execute();
     }
 
@@ -68,8 +66,8 @@ class CommentsManager
     {
         $comments = [];
         $q = $this->db->query('SELECT * FROM comments WHERE id_news =' . $infosNews);
-        while($data = $q ->fetch(PDO::FETCH_ASSOC)){
-           $comments[] = new Comment($data);
+        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            $comments[] = new Comment($data);
         }
         return $comments;
     }

@@ -150,7 +150,8 @@ $insertSignaledComment = $commentManager->insertedCommentsSigned();
 
 header('Location:index.php');
 
-*********************************************Found User with pseudo and hashed password******************************
+*********************************************Found User with pseudo and hashed password*********************************
+
 function autoload($className)
 {
     if(file_exists($path = $className.'.php')){
@@ -164,9 +165,27 @@ $manager = new UserManager($db);
 
 if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['verifier']))
 {
-    $data = $manager->existAccount($_POST['pseudo'], $_POST['password']);
+    $data = $manager->checkAccount($_POST['pseudo'], $_POST['password']);
     $user = $manager->getUser($data['id']);
 
     echo '<p>Pseudo : ' .$user->getPseudo(). ' <br/> PassWord : ' .$user->getPassword() .'</p>';
 
+}
+
+*******************************DELETE ACCOUNT WITH THE PSEUDO AND HASHED PASSWORD***************************************
+
+function autoload($className)
+{
+    if(file_exists($path = $className.'.php')){
+        require $path;
+    }
+}
+spl_autoload_register('autoload');
+
+$db = PDOFactory::connectedAtDataBase();
+$manager = new UserManager($db);
+
+if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['verifier']))
+{
+    $manager->deleteAccount($_POST['pseudo'], $_POST['password']);
 }

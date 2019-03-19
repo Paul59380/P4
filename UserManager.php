@@ -60,12 +60,25 @@ class UserManager
         ));
     }
 
-    public function deleteAccount($infoAccount, $password)
+    public function deleteAccount($infoAccount, $pass) // Check if the account exist and delete it
     {
+        $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
+        $q->execute([':test' => $infoAccount]);
+        $data = $q->fetch();
 
+        if($infoAccount == $data['pseudo']  && password_verify($pass, $data['password'])){
+
+            $delete = $this->db->prepare('DELETE FROM users WHERE pseudo = :pseudo');
+            $delete->execute([':pseudo' => $infoAccount]);
+
+            echo "Le compte à été supprimer";
+        }
+        else{
+            echo "Erreur fatale lors de la suppression";
+        }
     }
 
-    public function existAccount($infoAccount, $pass)
+    public function checkAccount($infoAccount, $pass) // Check if the account exist and return it
     {
            $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
            $q->execute([':test' => $infoAccount]);

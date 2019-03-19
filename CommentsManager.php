@@ -50,7 +50,7 @@ class CommentsManager
     {
         $comments = [];
 
-        $q = $this->db->query('SELECT * FROM comments');
+        $q = $this->db->query('SELECT * FROM comments ORDER BY date_create DESC ');
         while($data = $q ->fetch(PDO::FETCH_ASSOC))
         {
             $comments[] = new Comment($data);
@@ -60,7 +60,8 @@ class CommentsManager
 
     public function update($infoComment)
     {
-
+        $q = $this->db->prepare('UPDATE comments SET date_create = NOW() WHERE id ='.$infoComment);
+        $q->execute();
     }
 
     public function getCommentsNews($infosNews)
@@ -71,5 +72,25 @@ class CommentsManager
            $comments[] = new Comment($data);
         }
         return $comments;
+    }
+
+    public function insertedCommentsSigned()
+    {
+        $db = PDOFactory::connectedAtDataBase();
+
+        $q = $db->query('SELECT * FROM comments ORDER BY date_create DESC');
+        $data = $q->fetch();
+
+        $insert = $db->prepare('INSERT INTO
+        report_comment(id_comment, id_news, id_user, reported_content, reporting_date)
+        VALUE (:id, :id_news, :id_user, :contains_comment, :date_create)');
+
+        $insert->execute(array(
+            ":id" => $data['id'],
+            ":id_news" => $data['id_news'],
+            ":id_user" => $data['id_user'],
+            ":contains_comment" => $data['contains_comment'],
+            ":date_create" => $data['date_create']
+        ));
     }
 }

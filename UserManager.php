@@ -65,9 +65,18 @@ class UserManager
 
     }
 
-    public function existAccount($infoAccount, $password)
+    public function existAccount($infoAccount, $pass)
     {
-
+           $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
+           $q->execute([':test' => $infoAccount]);
+           $data = $q->fetch();
+           if($infoAccount == $data['pseudo']  && password_verify($pass, $data['password'])){
+               echo "Vous êtes connecté !";
+               return $data;
+           }
+           else{
+               return "Erreur fatale";
+           }
     }
 }
 

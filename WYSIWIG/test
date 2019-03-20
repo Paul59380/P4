@@ -45,7 +45,7 @@
         document.getElementById('comment').textContent = document.getElementById('result').value;
     })
 </script>
-<script src="edit.js">
+<script src="index.js">
 
 </script>
 </html>

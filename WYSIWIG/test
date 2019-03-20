@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="design.css"/>
+
+</head>
+<body>
+<input type="button" value="G" style="font-weight:bold;" onclick="Edit.order('bold')" />
+<input type="button" value="I" style="font-style:italic;" onclick="Edit.order('italic')"/>
+<input type="button" value="S" style="text-decoration:underline;" onclick="Edit.order('underline')" />
+<input type="button" value="Link" onclick="Edit.order('createLink')" />
+<input type="button" value="UnLink" onclick="Edit.order('unlink')" />
+<input type="button" value="Image" onclick="Edit.order('insertImage')" />
+<input type="button" value="justifyfull" onclick="Edit.order('justifyfull')" />
+
+<label for="title">Titre :</label>
+<select id="title" onchange="Edit.order('heading', this.value); this.selectedIndex = 0;">
+    <option value="">Titre </option>
+    <option value="h1">Titre 1</option>
+    <option value="h2">Titre 2</option>
+    <option value="h3">Titre 3</option>
+    <option value="h4">Titre 4</option>
+    <option value="h5">Titre 5</option>
+    <option value="h6">Titre 6</option>
+    <option value="p">Paragraphe</option>
+</select>
+
+<div id="edit" contenteditable="" ></div>
+
+<label for="result"></label> <br/>
+<input type="button" id="testButton" onclick="Edit.result();" value="Obtenir le HTML" />
+<br/>
+<textarea id="result"></textarea>
+
+<div id="comment">
+
+</div>
+
+</body>
+
+<script>
+    document.getElementById('testButton').addEventListener('click', function () {
+        document.getElementById('comment').textContent = document.getElementById('result').value;
+    })
+</script>
+<script src="edit.js">
+
+</script>
+</html>
+
+
+//https://www.tiny.cloud/
+
+****************************************************JS*********************************************************
+
+class Edit
+{
+    static order(nom, argument){
+        if(typeof argument === 'undefined'){
+            argument = "";
+        }
+        switch (nom) {
+            case "createLink":
+                argument = prompt("What is address for link ?");
+                break;
+            case "unlink":
+                argument = alert("The link is delete");
+                break;
+            case "insertImage":
+                argument = prompt("What is the path of the image ?");
+                break;
+            case  "justifyfull":
+                argument = alert('Content justify full');
+                break;
+        }
+        document.execCommand(nom, false, argument);
+    }
+
+    static result() {
+        document.getElementById('result').value = document.getElementById('edit').innerHTML;
+    }
+
+    static event()
+    {
+        document.getElementById('test').addEventListener('click', function () {
+            const content = document.getElementById('result').value();
+            document.getElementById('result').textContent = content;
+        })
+    }
+}

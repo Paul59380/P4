@@ -1,0 +1,75 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "roboto_condensedregular", Arial, sans-serif;
+}
+
+#listNews{
+    margin-top: 55px;
+}
+
+#listNews h2 {
+    text-align: center;
+}
+
+#contains_news {
+    text-align: justify;
+    width : 30%;
+    height: 200px;
+    margin: auto;
+    overflow: auto;
+    border: thick double #288ba3;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#listNews span {
+    font-size: 15px;
+}
+
+#getComments {
+    text-align: center;
+}
+
+#getComments a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+#getComments button {
+    padding: 5px;
+    border-radius: 8px;
+    background-color: aliceblue;
+}
+
+#getComments button:hover {
+    padding: 5px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+#commentUser {
+    width: 30%;
+    padding-bottom: 3px;
+    margin: auto;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    margin-top: 50px;
+    background-color: #f2fcff;
+}
+
+#descriptComment {
+    background-color: #288ba3;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding: 3px;
+}
+
+#containsComment {
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}

@@ -1,7 +1,5 @@
-class PreviewNews
-{
-    static previewNews()
-    {
+class PreviewNews {
+    static previewNews() {
         document.getElementById('event').addEventListener('click', function () {
             window.location.reload();
         });

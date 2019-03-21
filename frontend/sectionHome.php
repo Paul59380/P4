@@ -8,7 +8,7 @@
     </ul>
 </nav>
 <br/>
-<section id="header">
+<section id="headerHome">
     <div id="sectionNav">
         <p id="headerP">
             <em>Billet simple</em>

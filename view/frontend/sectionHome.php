@@ -9,13 +9,13 @@
 </nav>
 <br/>
 <section id="headerHome">
-    <div id="sectionNav">
-        <p id="headerP">
+    <div id="contentHeader">
+        <p id="headerText1">
             <em>Billet simple</em>
         </p>
         <hr id="headerHr">
 
-        <p id="headerP2">
+        <p id="headerText2">
             <em>Pour l'Alaska</em>
         </p>
     </div>

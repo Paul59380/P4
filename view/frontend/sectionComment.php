@@ -10,13 +10,13 @@
 <br/>
 <br/>
 <section id="headerComment">
-    <div id="sectionNav">
-        <p id="headerP">
-            <em>Découvrez tout les </em>
+    <div id="contentHeader">
+        <p id="headerText1">
+            <em>Découvrez tous les </em>
         </p>
         <hr id="headerHr">
 
-        <p id="headerP2">
+        <p id="headerText2">
             <em>Commentaires</em>
         </p>
     </div>

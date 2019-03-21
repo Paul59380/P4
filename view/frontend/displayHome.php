@@ -1,6 +1,6 @@
 <?php
 ob_start();
-include ('sectionHome.php');
+include('sectionHome.php');
 ?>
 
 <?php
@@ -10,7 +10,7 @@ foreach ($news as $new) {
     <div id="listNews">
         <div class="news">
 
-            <h2><?= htmlspecialchars($new->getTitleNews()) ?> <br/>
+            <h2><em><?= htmlspecialchars($new->getTitleNews()) ?></em> <br/>
                 <span> mis en ligne le : <?= htmlspecialchars($new->getDateCreate()) ?> </span>
             </h2>
 
@@ -18,7 +18,7 @@ foreach ($news as $new) {
                 <?= htmlspecialchars($new->getContainsNews()) ?>
             </p>
             <p id="getComments">
-                <button><a href="getComments.php?news=<?= $new->getId() ?>" >Accès aux commentaires</a></button>
+                <button><a href="getComments.php?news=<?= $new->getId() ?>" ><strong>Accès aux commentaires</strong></a></button>
             </p>
         </div>
     </div>
@@ -28,4 +28,4 @@ foreach ($news as $new) {
 }
     ?>
 <?php $content = ob_get_clean(); ?>
-<?php require ('template.php'); ?>
+<?php require('template.php'); ?>

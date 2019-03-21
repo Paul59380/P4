@@ -1,75 +1,155 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: "roboto_condensedregular", Arial, sans-serif;
-}
 
-#listNews{
-    margin-top: 55px;
-}
 
-#listNews h2 {
-    text-align: center;
-}
+@media all and (min-width: 1320px) {
 
-#contains_news {
-    text-align: justify;
-    width : 30%;
-    height: 200px;
-    margin: auto;
-    overflow: auto;
-    border: thick double #288ba3;
-    border-radius: 5px;
-    padding: 10px;
-}
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "roboto_condensedregular", Arial, sans-serif;
+    }
 
-#listNews span {
-    font-size: 15px;
-}
+    .allNavigationBar li{
+        display : inline;
+        margin-left: 20px;
+        margin-top: -5px;
+    }
 
-#getComments {
-    text-align: center;
-}
+    .allNavigationBar a{
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+    }
 
-#getComments a {
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-}
+    nav {
+        background-color: #176291;
+        padding: 1px;
+        position: fixed;
+        width: 100%;
+    }
 
-#getComments button {
-    padding: 5px;
-    border-radius: 8px;
-    background-color: aliceblue;
-}
+    .logoMontain{
+        margin-right: 60%;
+    }
 
-#getComments button:hover {
-    padding: 5px;
-    border-radius: 8px;
-    background-color: white;
-}
+    #sectionNav {
+        padding-top: 100px;
+        width: 60%;
+        margin: auto;
+    }
 
-#commentUser {
-    width: 30%;
-    padding-bottom: 3px;
-    margin: auto;
-    border-bottom: 1px solid black;
-    border-radius: 5px;
-    margin-top: 50px;
-    background-color: #f2fcff;
-}
+    #headerP {
+        font-size: 60px;
+        color: white;
+        margin-left: 5%;
+    }
 
-#descriptComment {
-    background-color: #288ba3;
-    border-radius: 5px;
-    color: white;
-    font-size: 18px;
-    text-align: center;
-    padding: 3px;
-}
+    #headerHr {
+        width: 100%;
+        height: 4px;
+        margin-top: -50px;
+        color: white;
+        background-color: white;
+    }
 
-#containsComment {
-    color: black;
-    font-size: 18px;
-    text-align: center;
+    #headerP2 {
+        font-size: 60px;
+        color: white;
+        margin-left: 53%;
+        margin-right: 3%;
+        margin-top: 2px;
+    }
+
+    #header {
+        background-image: url("images/alaska2.jpg");
+        //margin-top: 20px;
+        width: 100%;
+        height: 550px;
+    }
+
+    #listNews{
+        margin-top: 55px;
+    }
+
+    #listNews h2 {
+        text-align: center;
+    }
+
+    #contains_news {
+        text-align: justify;
+        width : 30%;
+        height: 200px;
+        margin: auto;
+        overflow: auto;
+        border: thick double #288ba3;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    #listNews span {
+        font-size: 15px;
+    }
+
+    #getComments {
+        text-align: center;
+    }
+
+    #getComments a {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+    }
+
+    #getComments button {
+        padding: 5px;
+        border-radius: 8px;
+        background-color: aliceblue;
+    }
+
+    #getComments button:hover {
+        padding: 5px;
+        border-radius: 8px;
+        background-color: white;
+    }
+
+    #commentUser {
+        width: 30%;
+        padding-bottom: 3px;
+        margin: auto;
+        border-bottom: 1px solid black;
+        border-radius: 5px;
+        margin-top: 50px;
+        background-color: #f2fcff;
+    }
+
+    #descriptComment {
+        background-color: #288ba3;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        padding: 3px;
+    }
+
+    #containsComment {
+        color: black;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .returnIndex {
+        padding: 6px;
+        margin-left: 3%;
+        background-color: #f2fcff;
+        border-radius: 5px;
+        width: 15%;
+        text-decoration: none;
+        font-weight: bold;
+        color: #288ba3;
+    }
+
+    .returnIndex:hover{
+          background-color: #288ba3;
+          color: white;
+    }
+
 }

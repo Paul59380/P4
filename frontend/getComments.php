@@ -12,7 +12,7 @@ spl_autoload_register('autoload');
 $db = PDOFactory::connectedAtDataBase();
 
 if(isset($_GET['news'])){
-    if($_GET['news'] <= 1){
+    if($_GET['news'] >= 0){
         $commentManager = new CommentsManager($db);
 
         $comments = $commentManager->getCommentsNews($_GET['news']);

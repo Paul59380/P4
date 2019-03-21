@@ -14,7 +14,7 @@ class Controller
         $manager = new NewsManager($db);
         $news = $manager->getListNews();
 
-        require('../../view/frontend/displayHome.php');
+        require('../view/frontend/displayHome.php');
     }
 
     public function getComments()
@@ -28,7 +28,7 @@ class Controller
                 $comments = $commentManager->getCommentsNews($_GET['news']);
                 $newsManager = new NewsManager($db);
                 $news = $newsManager->getNews($_GET['news']);
-                require('../../view/frontend/commentView.php');
+                require('../view/frontend/commentView.php');
 
             } else {
                 echo "Billet inexistant !";

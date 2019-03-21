@@ -1,10 +1,10 @@
 <?php
 function autoload($className)
 {
-    if (file_exists($path = '../../model/'. $className . '.php')) {
+    if (file_exists($path = '../model/'. $className . '.php')) {
         require $path;
     }
-    elseif (file_exists($pathTwo = "../../controller/" .$className . '.php')) {
+    elseif (file_exists($pathTwo = "../controller/" .$className . '.php')) {
         require $pathTwo;
     }
 }

@@ -2,7 +2,6 @@
 ob_start();
 include('sectionHome.php');
 ?>
-
 <?php
 foreach ($news as $new) {
     ?>
@@ -22,8 +21,6 @@ foreach ($news as $new) {
             </p>
         </div>
     </div>
-
-
     <?php
 }
     ?>

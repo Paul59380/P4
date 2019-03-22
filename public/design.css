@@ -12,14 +12,19 @@
         margin-top: -5px;
     }
 
+    #userSession {
+        font-weight: bold;
+        color: #0F056B;
+    }
+
     .allNavigationBar a{
         text-decoration: none;
         font-weight: bold;
-        color: white;
+        color: #0F056B;
     }
 
     nav {
-        background-color: #0F056B;
+        background-color: white;
         padding: 1px;
         position: fixed;
         width: 100%;
@@ -58,7 +63,7 @@
     }
 
     #headerHome {
-        background-image: url("images/home.jpg");
+        background-image: url("images/alaska2.jpg");
         //margin-top: 20px;
         width: 100%;
         height: 550px;
@@ -191,4 +196,9 @@
         margin-top: 20px;
     }
 
+    #sessionAccount {
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+    }
 }

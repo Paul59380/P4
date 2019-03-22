@@ -1,12 +1,11 @@
-<nav>
-    <ul class="allNavigationBar">
-        <li class="logoMontain"><a href="index.php"> <i class="fas fa-mountain fa-2x"></i> </a> </li>
-        <li><a href="index.php">Acceuil</a></li>
-        <li><a href="decouvrez_moi">Découvrez moi</a></li>
-        <li><a href="connection.php">Se connecter</a></li>
-        <li><a href="deconnection.php">Déconnection</a></li>
-    </ul>
-</nav>
+<?php
+if (isset($_SESSION['name'])){
+    include('navigationConnect.php');
+} else {
+    include('navigationPublic.php');
+}
+ ?>
+
 <br/>
 <br/>
 <section id="headerComment">

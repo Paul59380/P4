@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function autoload($className)
 {
     if (file_exists($path = '../model/'. $className . '.php')) {

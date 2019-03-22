@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require('frontend/connectionForm.php');
 function autoload($className)
 {
@@ -26,8 +26,8 @@ if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['send'])
 
         $data = $userManager->checkAccount($_POST['pseudo'], $_POST['password']);
         $user = $userManager->getUser($data['id']);
-        var_dump($data);
-        echo '<p>' . htmlspecialchars($user->getPseudo()) . '</p>';
+        $_SESSION['name'] = $user->getPseudo();
+        echo $_SESSION['name'];
     }
     else {
         echo "Ce personnage existe déjà !";
@@ -36,10 +36,11 @@ if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['send'])
 }
 elseif (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['verify']))
 {
+
     $data = $userManager->checkAccount($_POST['pseudo'], $_POST['password']);
     $user = $userManager->getUser($data['id']);
-
-    echo '<p>' .$user->getPseudo() . ' || ' . $user->getPassword() . '</p>';
+    $_SESSION['name'] = $user->getPseudo();
+    header('Location:index.php');
 }
 
 

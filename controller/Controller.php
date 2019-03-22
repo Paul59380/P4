@@ -36,4 +36,26 @@ class Controller
         }
     }
 
+    public function createAccount()
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $manager = new UserManager($db);
+
+        if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['send'])) {
+
+            if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+                $manager->addUserAccount($_POST['pseudo'], password_hash($_POST['password'], PASSWORD_DEFAULT));
+                echo "Utilisateur ajouté";
+            }
+            elseif (!empty($_POST['pseudo']) && empty($_POST['password'])) {
+
+                $manager->addVisitorAccount($_POST['pseudo'], $_POST['password']);
+                echo "Visiteur ajouté";
+
+            }
+            else {
+                header('Location:index.php');
+            }
+        }
+    }
 }

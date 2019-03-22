@@ -169,7 +169,6 @@ if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['verifie
     $user = $manager->getUser($data['id']);
 
     echo '<p>Pseudo : ' .$user->getPseudo(). ' <br/> PassWord : ' .$user->getPassword() .'</p>';
-
 }
 
 *******************************DELETE ACCOUNT WITH THE PSEUDO AND HASHED PASSWORD***************************************

@@ -52,12 +52,18 @@ class UserManager
 
     public function addVisitorAccount($infoAccount, $password)
     {
-        $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
-        $q->execute(array(
-            ":infosAccount" => $infoAccount,
-            ":password_account" => $password,
-            ":id_profil" => 3
-        ));
+        if(!$this->exists($infoAccount)){
+            $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
+            $q->execute(array(
+                ":infosAccount" => $infoAccount,
+                ":password_account" => $password,
+                ":id_profil" => 3
+            ));
+        }
+        else {
+            echo "Ce personnage existe déjà !";
+        }
+
     }
 
     public function deleteAccount($infoAccount, $pass) // Check if the account exist and delete it
@@ -77,7 +83,7 @@ class UserManager
         }
     }
 
-    public function checkAccount($infoAccount, $pass) // Check if the account exist and return it
+    public function checkAccountUser($infoAccount, $pass) // Check if the account exist and return it
     {
         $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
         $q->execute([':test' => $infoAccount]);
@@ -86,7 +92,22 @@ class UserManager
             echo "<p>Vous êtes connecté !</p>";
             return $data;
         } else {
+            echo 'Mots de pass incorrect';
             return "<p>Erreur fatale</p>";
+        }
+    }
+
+    public function checkAccountVisitor($infoAccount) // Check if the account exist and return it
+    {
+        $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
+        $q->execute([':test' => $infoAccount]);
+        $data = $q->fetch();
+        if ($infoAccount == $data['pseudo'] && $data['id_profil'] == 3) {
+            echo "<p>Vous êtes connecté !</p>";
+            return $data;
+        } else{
+           echo "<p style='text-align: center'>Un mots de passe doit être renseigner pour un compte utilisateur</p>";
+           //throw new Exception('Erreur');
         }
     }
 

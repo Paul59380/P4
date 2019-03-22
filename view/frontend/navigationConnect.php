@@ -13,7 +13,7 @@
             echo "<li><a href=\"connexion.php\">Se connecter</a></li>";
         };
         ?>
-        <li><a href="?deconnexion=1">Déconnexion</a> </li>
+        <li><a href="index.php?deconnexion">Déconnexion</a> </li>
     </ul>
 </nav>
 

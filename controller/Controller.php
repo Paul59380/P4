@@ -45,13 +45,10 @@ class Controller
 
             if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                 $manager->addUserAccount($_POST['pseudo'], password_hash($_POST['password'], PASSWORD_DEFAULT));
-                echo "Utilisateur ajouté";
             }
-            elseif (!empty($_POST['pseudo']) && empty($_POST['password'])) {
+            elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
 
                 $manager->addVisitorAccount($_POST['pseudo'], $_POST['password']);
-                echo "Visiteur ajouté";
-
             }
             else {
                 header('Location:index.php');

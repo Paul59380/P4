@@ -3,10 +3,9 @@ session_start();
 require('frontend/connectionForm.php');
 function autoload($className)
 {
-    if (file_exists($path = '../model/'. $className . '.php')) {
+    if (file_exists($path = '../model/' . $className . '.php')) {
         require $path;
-    }
-    elseif (file_exists($pathTwo = "../controller/" .$className . '.php')) {
+    } elseif (file_exists($pathTwo = "../controller/" . $className . '.php')) {
         require $pathTwo;
     }
 }
@@ -16,31 +15,50 @@ spl_autoload_register('autoload');
 
 $db = PDOFactory::connectedAtDataBase();
 $userManager = new UserManager($db);
+$identify = new Controller();
 
+if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send'])) {
 
-if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['send']))
-{
-    if(!$userManager->exists($_POST['pseudo'])){
-        $identify = new Controller();
+    if (!$userManager->exists($_POST['pseudo'])) {
         $identify->createAccount();
 
-        $data = $userManager->checkAccount($_POST['pseudo'], $_POST['password']);
+        $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
         $user = $userManager->getUser($data['id']);
         $_SESSION['name'] = $user->getPseudo();
-        echo $_SESSION['name'];
-    }
-    else {
+        header('Location:index.php');
+    } else {
         echo "Ce personnage existe déjà !";
     }
 
-}
-elseif (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['verify']))
-{
+} elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
 
-    $data = $userManager->checkAccount($_POST['pseudo'], $_POST['password']);
+    if (!$userManager->exists($_POST['pseudo'])) {
+        $identify->createAccount();
+
+        $data = $userManager->checkAccountVisitor($_POST['pseudo']);
+        $user = $userManager->getUser($data['id']);
+        $_SESSION['name'] = $user->getPseudo();
+        header('Location:index.php');
+    } else {
+        echo "<p style='text-align: center'>Le compte visiteur " . $_POST['pseudo'] .
+            " ne pas pas être crée car ce pseudo existe déjà !</p>";
+    }
+} elseif (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['verify'])) {
+
+    $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
     $user = $userManager->getUser($data['id']);
     $_SESSION['name'] = $user->getPseudo();
     header('Location:index.php');
+
+} elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['verify'])) {
+
+    if($_POST['password'] == ""){
+        $data = $userManager->checkAccountVisitor($_POST['pseudo']);
+        var_dump($data);
+        $user = $userManager->getUser($data['id']);
+        $_SESSION['name'] = $user->getPseudo();
+        header('Location:index.php');
+    }
 }
 
 

@@ -19,8 +19,8 @@ include('sectionForm.php');
         </p>
 
         <p>
-            <input type="submit" name="send" value="Envoyer"/>
-            <input type="submit" name="verify" value="vérifier"/>
+            <input type="submit" name="send" value="S'inscrire" required/>
+            <input type="submit" name="verify" value="S'identifier" required/>
         </p>
     </form>
 </div>

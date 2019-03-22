@@ -83,10 +83,21 @@ class UserManager
         $q->execute([':test' => $infoAccount]);
         $data = $q->fetch();
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
-            echo "Vous êtes connecté !";
+            echo "<p>Vous êtes connecté !</p>";
             return $data;
         } else {
-            return "Erreur fatale";
+            return "<p>Erreur fatale</p>";
+        }
+    }
+
+    public function exists($info)
+    {
+        if (is_int($info)) {
+            return (bool)$this->db->query('SELECT * FROM users WHERE id=' . $info)->fetchColumn();
+        } else {
+            $q = $this->db->prepare('SELECT * FROM users WHERE pseudo = :pseudo');
+            $q->execute([':pseudo' => $info]);
+            return $q->fetchColumn();
         }
     }
 }

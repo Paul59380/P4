@@ -25,6 +25,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send
         $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
         $user = $userManager->getUser($data['id']);
         $_SESSION['name'] = $user->getPseudo();
+        $_SESSION['id'] = $user->getId();
         header('Location:index.php');
     } else {
         echo "Ce personnage existe déjà !";
@@ -38,6 +39,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send
         $data = $userManager->checkAccountVisitor($_POST['pseudo']);
         $user = $userManager->getUser($data['id']);
         $_SESSION['name'] = $user->getPseudo();
+        $_SESSION['id'] = $user->getId();
         header('Location:index.php');
     } else {
         echo "<p style='text-align: center'>Le compte visiteur " . $_POST['pseudo'] .
@@ -48,6 +50,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send
     $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
     $user = $userManager->getUser($data['id']);
     $_SESSION['name'] = $user->getPseudo();
+    $_SESSION['id'] = $user->getId();
     header('Location:index.php');
 
 } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['verify'])) {
@@ -57,6 +60,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send
         var_dump($data);
         $user = $userManager->getUser($data['id']);
         $_SESSION['name'] = $user->getPseudo();
+        $_SESSION['id'] = $user->getId();
         header('Location:index.php');
     }
 }

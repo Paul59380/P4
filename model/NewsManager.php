@@ -51,11 +51,22 @@ class NewsManager
     public function getListNews()
     {
         $news = [];
-        $q = $this->db->query('SELECT * FROM news');
+        $q = $this->db->query('SELECT * FROM news ORDER BY date_create DESC ');
 
         while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $news[] = new News($data);
         }
         return $news;
+    }
+
+    public function addNews($idAuthor, $titleNews, $containsNews)
+    {
+        $q = $this->db->prepare('INSERT INTO news(id_author, title_news, contains_news)
+        VALUE (:id_author,:title_news,:contains_news)');
+        $q->execute(array(
+            ":id_author" => $idAuthor,
+            ":title_news" => $titleNews,
+            ":contains_news" => $containsNews
+        ));
     }
 }

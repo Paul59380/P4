@@ -64,4 +64,13 @@ class Controller
         $comment = $signedCommentManager->resortCommentsSigned();
         return $comment;
     }
+
+    public function addNews($idAuthor, $titleNews, $containsNews)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $newsManager = new NewsManager($db);
+
+        $addNews = $newsManager->addNews($idAuthor, $titleNews, $containsNews);
+        return $addNews;
+    }
 }

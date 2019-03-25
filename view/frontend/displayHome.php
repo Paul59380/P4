@@ -14,7 +14,7 @@ foreach ($news as $new) {
             </h2>
 
             <p id="contains_news">
-                <?= htmlspecialchars($new->getContainsNews()) ?>
+                <?= htmlspecialchars($new->getContainsNews())?>
             </p>
             <p id="getComments">
                 <button><a href="getComments.php?news=<?= $new->getId() ?>" ><strong>Accès aux commentaires</strong></a></button>

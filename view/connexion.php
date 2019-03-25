@@ -60,5 +60,3 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send
         header('Location:index.php');
     }
 }
-
-

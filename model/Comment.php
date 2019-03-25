@@ -16,6 +16,7 @@ class Comment
     protected $user;
     protected $news;
 
+
     public function __construct($data)
     {
         $this->hydrate($data);

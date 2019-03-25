@@ -201,4 +201,12 @@
         font-weight: bold;
         color: white;
     }
+
+    #reported_comment {
+         width: 50%;
+        margin: auto;
+        margin-top: 40px;
+        border-radius: 10px;
+        background-color: #e5e5e5;
+    }
 }

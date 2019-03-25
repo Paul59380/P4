@@ -55,4 +55,13 @@ class Controller
             }
         }
     }
+
+    public function commentsSigned()
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $signedCommentManager = new SignedCommentManager($db);
+
+        $comment = $signedCommentManager->resortCommentsSigned();
+        return $comment;
+    }
 }

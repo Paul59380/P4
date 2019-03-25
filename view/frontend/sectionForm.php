@@ -1,6 +1,10 @@
 <?php
 if (isset($_SESSION['name'])){
-    include('navigationConnect.php');
+    if($_SESSION['name'] != "Jean Frtrch") {
+        include('navigationConnect.php');
+    }else{
+        include('navigationAdmin.php');
+    }
 } else {
     include('navigationPublic.php');
 }

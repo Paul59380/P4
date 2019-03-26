@@ -65,7 +65,7 @@ class CommentsManager
     public function getCommentsNews($infosNews)
     {
         $comments = [];
-        $q = $this->db->query('SELECT * FROM comments WHERE id_news =' . $infosNews);
+        $q = $this->db->query('SELECT * FROM comments  WHERE id_news =' . $infosNews.' ORDER BY date_create DESC');
         while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }

@@ -246,4 +246,34 @@
         font-size: 20px;
         border-radius: 15px;
     }
+
+    footer {
+        margin-top: 50px;
+        text-align: center;
+        background-color: lightgrey;
+        padding: 10px;
+    }
+
+    footer input, textarea, label {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+
+    footer textarea {
+        width: 20%;
+        height: 200px;
+        padding: 10px;
+    }
+
+    footer input {
+        width: 10%;
+        padding: 10px;
+    }
+
+    footer input[type="submit"] {
+        background-color: #288ba3;
+        color: white;
+        font-size: 18px;
+    }
 }

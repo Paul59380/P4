@@ -101,4 +101,13 @@ class Controller
         $reportedManager->deleteComment($idComment, $idOriginal);
         return $reportedManager;
     }
+
+    public function addComment($idUser, $getUrlIdNews, $containsComment)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $commentManager = new CommentsManager($db);
+
+        $commentManager->addComment($idUser, $getUrlIdNews, $containsComment);
+        return $commentManager;
+    }
 }

@@ -110,4 +110,21 @@ class Controller
         $commentManager->addComment($idUser, $getUrlIdNews, $containsComment);
         return $commentManager;
     }
+
+    public function getComment($infosComment)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $commentManager = new CommentsManager($db);
+
+        return $commentManager->getComment($infosComment);
+    }
+
+    public function signedComment($id_comment, $id_news, $id_user, $contains_comment, $date)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $commentManager = new CommentsManager($db);
+
+        $commentManager->insertedCommentsSigned($id_comment, $id_news, $id_user, $contains_comment, $date);
+        return $commentManager;
+    }
 }

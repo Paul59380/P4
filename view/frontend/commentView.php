@@ -28,6 +28,9 @@ foreach ($comments as $comment) {
             <?= $comment->getDateCreate() ?>
         </p>
         <p id="containsComment"><?= $comment->getContainsComment() ?> </p>
+
+            <a href="signedComment.php?news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">Signaler</a>
+
         <?php
         ?>
     </div>

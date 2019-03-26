@@ -72,23 +72,18 @@ class CommentsManager
         return $comments;
     }
 
-    public function insertedCommentsSigned()
+    public function insertedCommentsSigned($id_comment, $id_news, $id_user, $contains_comment, $date)
     {
-        $db = PDOFactory::connectedAtDataBase();
-
-        $q = $db->query('SELECT * FROM comments ORDER BY date_create DESC');
-        $data = $q->fetch();
-
-        $insert = $db->prepare('INSERT INTO
+        $insert = $this->db->prepare('INSERT INTO
         report_comment(id_comment, id_news, id_user, reported_content, reporting_date)
         VALUE (:id, :id_news, :id_user, :contains_comment, :date_create)');
 
         $insert->execute(array(
-            ":id" => $data['id'],
-            ":id_news" => $data['id_news'],
-            ":id_user" => $data['id_user'],
-            ":contains_comment" => $data['contains_comment'],
-            ":date_create" => $data['date_create']
+            ":id" => $id_comment,
+            ":id_news" => $id_news,
+            ":id_user" => $id_user,
+            ":contains_comment" => $contains_comment,
+            ":date_create" => $date
         ));
     }
 }

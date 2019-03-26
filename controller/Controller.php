@@ -92,4 +92,13 @@ class Controller
         $reportedManager->updateComment($id, $content, $idOriginal);
         return $reportedManager;
     }
+
+    public function deleteComments($idComment, $idOriginal)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $reportedManager =  new ReportedCommentManager($db);
+
+        $reportedManager->deleteComment($idComment, $idOriginal);
+        return $reportedManager;
+    }
 }

@@ -15,7 +15,7 @@ foreach ($commentSigned as $comment) {
         </p>
         <p id="containsComment"><?= $comment->getReportedContent() ?> </p>
         <a href="updateComment.php?id=<?= $comment->getId() ?>">Modifier</a>
-        <a href="deleteComment.php?<?= $comment->getId() ?>">Supprimer</a>
+        <a href="deleteComment.php?id=<?= $comment->getId() ?>&origin=<?= $comment->getIdComment() ?>">Supprimer</a>
     </fieldset>
     <?php
 }

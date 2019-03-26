@@ -24,18 +24,31 @@ class ReportedCommentManager
         return $comment;
     }
 
-    public function updateComment($infoId, $content, $idOriginal)
+    public function updateComment($idReportedComment, $content, $idOriginal)
     {
         $q = $this->db->prepare("UPDATE report_comment SET reported_content = :content WHERE id = :id");
         $q->execute(array(
             ":content" => $content,
-            ":id" => $infoId
+            ":id" => $idReportedComment
         ));
 
         $q = $this->db->prepare("UPDATE comments SET contains_comment = :content WHERE id = :id");
         $q->execute(array(
             ":content" => $content,
             ":id" => $idOriginal
+        ));
+    }
+
+    public function deleteComment($idReportedComment, $idOriginal)
+    {
+        $q = $this->db->prepare('DELETE FROM report_comment WHERE id= :idReported');
+        $q->execute(array(
+            ":idReported" => $idReportedComment
+        ));
+
+        $q = $this->db->prepare('DELETE FROM comments WHERE id = :idOriginal');
+        $q->execute(array(
+            ":idOriginal" => $idOriginal
         ));
     }
 }

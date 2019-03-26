@@ -14,7 +14,7 @@ spl_autoload_register('autoload');
 
 ob_start();
 include('frontend/sectionHome.php');
-include ('frontend/wysiwyg.php');
+include('frontend/wysiwyg.php');
 $content = ob_get_clean();
 require('frontend/template.php');
 

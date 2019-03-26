@@ -30,6 +30,8 @@ foreach ($comments as $comment) {
             <?= $comment->getDateCreate() ?>
         </p>
         <p id="containsComment"><?= $comment->getContainsComment() ?> </p>
+        <?php
+        ?>
     </div>
     <?php
     }

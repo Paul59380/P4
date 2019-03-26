@@ -73,4 +73,23 @@ class Controller
         $addNews = $newsManager->addNews($idAuthor, $titleNews, $containsNews);
         return $addNews;
     }
+
+    public function getReportedComment($infoComment)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $reportedCommentManager = new ReportedCommentManager($db);
+
+        $testComment = $reportedCommentManager->getComment($infoComment);
+        //var_dump($testComment);
+        return $testComment;
+    }
+
+    public function updateComments($id, $content, $idOriginal)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $reportedManager = new ReportedCommentManager($db);
+
+        $reportedManager->updateComment($id, $content, $idOriginal);
+        return $reportedManager;
+    }
 }

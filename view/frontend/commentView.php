@@ -18,7 +18,7 @@ include('sectionComment.php')
     </div>
 </div>
 
-
+<h2 style="text-align: center"><em>Liste de commentaires : </em></h2>
 <?php
 foreach ($comments as $comment) {
     ?>
@@ -38,6 +38,10 @@ foreach ($comments as $comment) {
 ?>
 <?php if (isset($_SESSION['name'])) {
     ?>
+    <hr style="width: 60%;  margin-top: 100px"/>
+    <h2 style="text-align: center"><em> <?php
+                echo htmlspecialchars($_SESSION['name']);
+            ?> , n'hésitez pas à laisser votre avis ! </em></h2>
     <footer>
         <div id="footerRight">
             <form action="addComment.php?id=<?= $news->getId() ?>&idUser=<?= $_SESSION['id'] ?>" method="post">

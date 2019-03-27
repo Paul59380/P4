@@ -23,7 +23,7 @@ include('sectionHome.php');
             du site. <br/>
 
             Vous pouvez dès à présent lire mon nouveau roman intitulé "Billet simple pour l'Alaska". <br/><br/>
-        <h3 style="text-align: left"><em>Jean Fortercohe</em></h3>
+        <h3 style="text-align: left"><em>Jean Forteroche</em></h3>
         </p>
     </div>
 </div>

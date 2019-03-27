@@ -40,7 +40,7 @@ foreach ($comments as $comment) {
     ?>
     <hr style="width: 60%;  margin-top: 100px"/>
     <h2 style="text-align: center"><em> <?php
-                echo htmlspecialchars($_SESSION['name']);
+            echo htmlspecialchars($_SESSION['name']);
             ?> , n'hésitez pas à laisser votre avis ! </em></h2>
     <footer>
         <div id="footerRight">

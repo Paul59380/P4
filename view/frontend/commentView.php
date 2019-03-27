@@ -8,7 +8,7 @@ include('sectionComment.php')
 
 <div id="listNews">
     <div class="news">
-        <h2><?= htmlspecialchars($news->getTitleNews()) ?> <br/>
+        <h2><?= htmlspecialchars(htmlspecialchars($news->getTitleNews())) ?> <br/>
             <span> mis en ligne le : <?= htmlspecialchars($news->getDateCreate()) ?> </span>
         </h2>
 
@@ -24,13 +24,12 @@ foreach ($comments as $comment) {
     ?>
     <div id="commentUser">
         <p id="descriptComment">
-            <?= $comment->getUser()->getPseudo() ?> <br/>
+            <?= htmlspecialchars($comment->getUser()->getPseudo()) ?> <br/>
             <?= $comment->getDateCreate() ?>
+            <a href="signedComment.php?news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">
+                <i style="color: #f44542; padding-left: 10px" class="fas fa-exclamation-triangle fa-1x"></i></a>
         </p>
-        <p id="containsComment"><?= $comment->getContainsComment() ?> </p>
-
-            <a href="signedComment.php?news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">Signaler</a>
-
+        <p id="containsComment"><?= htmlspecialchars($comment->getContainsComment()) ?> </p>
         <?php
         ?>
     </div>
@@ -44,7 +43,7 @@ foreach ($comments as $comment) {
             <form action="addComment.php?id=<?= $news->getId() ?>&idUser=<?= $_SESSION['id'] ?>" method="post">
                 <label><strong>Pseudo :</strong><br/>
                     <input type="text" name="pseudoComment" value="<?php if (isset($_SESSION['name'])) {
-                        echo $_SESSION['name'];
+                        echo htmlspecialchars($_SESSION['name']);
                     } ?>">
                 </label><br/>
                 <label><strong>Commentaire :</strong></label>

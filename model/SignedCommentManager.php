@@ -20,7 +20,7 @@ class SignedCommentManager
         $comments =  [];
 
         $db = PDOFactory::connectedAtDataBase();
-        $q = $db->query('SELECT * FROM report_comment ORDER BY reporting_date DESC');
+        $q = $db->query('SELECT * FROM report_comment ORDER BY id DESC');
         while ($data = $q->fetch(PDO::FETCH_ASSOC))
         {
             $comments[] = new SignedComment($data);

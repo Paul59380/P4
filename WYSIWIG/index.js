@@ -10,3 +10,4 @@ class PreviewNews {
 
 PreviewNews.previewNews();
 
+alert("test");

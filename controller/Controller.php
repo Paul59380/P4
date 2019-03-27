@@ -127,4 +127,31 @@ class Controller
         $commentManager->insertedCommentsSigned($id_comment, $id_news, $id_user, $contains_comment, $date);
         return $commentManager;
     }
+
+    public function getNews($idNews)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $newsManager = new NewsManager($db);
+
+        $newsManager->getNews($idNews);
+        return $newsManager;
+    }
+
+    public function updateNews($id, $titleNews, $containsNews)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $newsManager = new NewsManager($db);
+
+        $newsManager->updateNews($id, $titleNews, $containsNews);
+        return $newsManager;
+    }
+
+    public function deleteNews($idNews)
+    {
+        $db = PDOFactory::connectedAtDataBase();
+        $newsManager = new NewsManager($db);
+
+        $deleteNews = $newsManager->deleteNews($idNews);
+        return $deleteNews;
+    }
 }

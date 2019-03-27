@@ -9,7 +9,7 @@
 class NewsManager
 {
     protected $db;
-    private $news;
+    protected $news;
 
     /**
      * @param mixed $db
@@ -67,6 +67,24 @@ class NewsManager
             ":id_author" => $idAuthor,
             ":title_news" => $titleNews,
             ":contains_news" => $containsNews
+        ));
+    }
+
+    public function updateNews($id, $titleNews, $containsNews)
+    {
+        $q = $this->db->prepare('UPDATE news SET 
+                title_news = :titleNews, contains_news = :containsNews WHERE id ='.$id);
+        $q->execute(array(
+            ":titleNews" => $titleNews,
+            ":containsNews" => $containsNews
+        ));
+    }
+
+    public function deleteNews($idNews)
+    {
+        $q = $this->db->prepare('DELETE FROM news WHERE id = :id');
+        $q->execute(array(
+            ":id" => $idNews
         ));
     }
 }

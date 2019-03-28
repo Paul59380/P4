@@ -8,14 +8,7 @@
 
 class Controller
 {
-    public function getList()
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $manager = new NewsManager($db);
-        $news = $manager->getListNews();
 
-        require('../view/frontend/displayHome.php');
-    }
 
     public function getComments()
     {
@@ -63,15 +56,6 @@ class Controller
 
         $comment = $signedCommentManager->resortCommentsSigned();
         return $comment;
-    }
-
-    public function addNews($idAuthor, $titleNews, $containsNews)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $newsManager = new NewsManager($db);
-
-        $addNews = $newsManager->addNews($idAuthor, $titleNews, $containsNews);
-        return $addNews;
     }
 
     public function getReportedComment($infoComment)
@@ -126,32 +110,5 @@ class Controller
 
         $commentManager->insertedCommentsSigned($id_comment, $id_news, $id_user, $contains_comment, $date);
         return $commentManager;
-    }
-
-    public function getNews($idNews)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $newsManager = new NewsManager($db);
-
-        $newsManager->getNews($idNews);
-        return $newsManager;
-    }
-
-    public function updateNews($id, $titleNews, $containsNews)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $newsManager = new NewsManager($db);
-
-        $newsManager->updateNews($id, $titleNews, $containsNews);
-        return $newsManager;
-    }
-
-    public function deleteNews($idNews)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $newsManager = new NewsManager($db);
-
-        $deleteNews = $newsManager->deleteNews($idNews);
-        return $deleteNews;
     }
 }

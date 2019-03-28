@@ -23,17 +23,17 @@ if(!isset($_GET['news'])){
 
     if (!empty($_POST['titleNews']) && !empty($_POST['newsText']) && isset($_POST['sendNews']))
     {
-        $addNews = new Controller();
+        $addNews = new NewsController();
         $addNews->addNews($_SESSION['id'], $_POST['titleNews'],strip_tags($_POST['newsText']));
         header('Location:index.php');
     }
 } elseif (isset($_GET['delete'])){
-    $controller = new Controller();
+    $controller = new NewsController();
     $deleteNews = $controller->deleteNews($_GET['news']);
     header('Location:index.php');
 }
 else {
-    $controller = new Controller();
+    $controller = new NewsController();
     $news = $controller->getNews($_GET['news']);
 
     $new = new News($news);
@@ -45,7 +45,7 @@ else {
 
     if (!empty($_POST['titleNews']) && !empty($_POST['newsText']) && isset($_POST['sendNews']))
     {
-        $controller = new Controller();
+        $controller = new NewsController();
         $updateNews = $controller->updateNews($_GET['news'],$_POST['titleNews'], strip_tags($_POST['newsText']));
         echo "<script>
             document.location.href=\"index.php\"

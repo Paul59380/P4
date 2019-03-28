@@ -12,7 +12,7 @@ function autoload($className)
 }
 
 spl_autoload_register('autoload');
-$getListNews = new Controller();
+$getListNews = new NewsController();
 $getListNews->getList();
 
 

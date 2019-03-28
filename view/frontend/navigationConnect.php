@@ -5,7 +5,7 @@
             echo "<li id='userSession'><a style='color: #01991f' href='index.php'> " .$_SESSION['name'] . "</a></li>";
         };
         ?>
-        <li class="logoMontain"><a href="index.php"> <i class="fas fa-mountain fa-2x"></i> </a> </li>
+        <li class="logoMontain"><a href="index.php"> <i class="fas fa-igloo fa-2x"></i> </a> </li>
         <li><a href="index.php">Acceuil</a></li>
         <li><a href="decouvrez_moi">Découvrez moi</a></li>
         <?php

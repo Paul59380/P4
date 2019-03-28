@@ -15,7 +15,8 @@ spl_autoload_register('autoload');
 
 $db = PDOFactory::connectedAtDataBase();
 $userManager = new UserManager($db);
-$identify = new Controller();
+
+$identify = new UserController();
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send'])) {
 

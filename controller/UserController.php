@@ -23,12 +23,10 @@ class UserController
 
             if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                 $this->userManager->addUserAccount($_POST['pseudo'], password_hash($_POST['password'], PASSWORD_DEFAULT));
-            }
-            elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
+            } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
 
                 $this->userManager->addVisitorAccount($_POST['pseudo'], $_POST['password']);
-            }
-            else {
+            } else {
                 header('Location:index.php');
             }
         }

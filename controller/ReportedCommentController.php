@@ -6,24 +6,14 @@
  * Time: 13:52
  */
 
-class Controller
+class ReportedCommentController
 {
-    public function commentsSigned()
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $signedCommentManager = new SignedCommentManager($db);
-
-        $comment = $signedCommentManager->resortCommentsSigned();
-        return $comment;
-    }
-
     public function getReportedComment($infoComment)
     {
         $db = PDOFactory::connectedAtDataBase();
         $reportedCommentManager = new ReportedCommentManager($db);
 
         $testComment = $reportedCommentManager->getComment($infoComment);
-        //var_dump($testComment);
         return $testComment;
     }
 

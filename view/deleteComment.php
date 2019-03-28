@@ -10,6 +10,6 @@ function autoload($className)
 
 spl_autoload_register('autoload');
 
-$controller = new Controller();
+$controller = new ReportedCommentController();
 $controller->deleteComments($_GET['id'], $_GET['origin']);
 header('Location:adminComments.php');

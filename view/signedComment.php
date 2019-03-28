@@ -10,7 +10,7 @@ function autoload($className)
 
 spl_autoload_register('autoload');
 
-$controller = new Controller();
+$controller = new CommentController();
 $test = $controller->getComment($_GET['comment']);
 
 $insert = $controller->signedComment(

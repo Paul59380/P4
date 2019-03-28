@@ -10,24 +10,7 @@ class Controller
 {
 
 
-    public function getComments()
-    {
-        $db = PDOFactory::connectedAtDataBase();
 
-        if (isset($_GET['news'])) {
-            if ($_GET['news'] >= 0) {
-
-                $commentManager = new CommentsManager($db);
-                $comments = $commentManager->getCommentsNews($_GET['news']);
-                $newsManager = new NewsManager($db);
-                $news = $newsManager->getNews($_GET['news']);
-                require('../view/frontend/commentView.php');
-
-            } else {
-                echo "Billet inexistant !";
-            }
-        }
-    }
 
     public function createAccount()
     {
@@ -84,31 +67,5 @@ class Controller
 
         $reportedManager->deleteComment($idComment, $idOriginal);
         return $reportedManager;
-    }
-
-    public function addComment($idUser, $getUrlIdNews, $containsComment)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $commentManager = new CommentsManager($db);
-
-        $commentManager->addComment($idUser, $getUrlIdNews, $containsComment);
-        return $commentManager;
-    }
-
-    public function getComment($infosComment)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $commentManager = new CommentsManager($db);
-
-        return $commentManager->getComment($infosComment);
-    }
-
-    public function signedComment($id_comment, $id_news, $id_user, $contains_comment, $date)
-    {
-        $db = PDOFactory::connectedAtDataBase();
-        $commentManager = new CommentsManager($db);
-
-        $commentManager->insertedCommentsSigned($id_comment, $id_news, $id_user, $contains_comment, $date);
-        return $commentManager;
     }
 }

@@ -10,6 +10,6 @@ function autoload($className)
 }
 
 spl_autoload_register('autoload');
-$getComments = new Controller();
+$getComments = new CommentController();
 $getComments->getComments();
 

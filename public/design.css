@@ -238,7 +238,7 @@ nav {
 #reported_comment {
     width: 50%;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 70px;
     border-radius: 10px;
     background-image: linear-gradient(white, lightblue, white);
     box-shadow: 3px 5px 5px lightcoral;
@@ -365,7 +365,11 @@ footer input[type="submit"] {
         display: none;
     }
 
-    .allNavigationBar li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+    .allNavigationBar li:nth-child(1) {
+        display: none;
+    }
+
+    .allNavigationBar li:nth-child(2) {
         display: none;
         flex-wrap: wrap;
         align-items: center;
@@ -375,7 +379,6 @@ footer input[type="submit"] {
     .allNavigationBar li:nth-child(4), li:nth-child(5), li:nth-child(6) {
         display: inline-block;
         margin-right: 10%;
-        margin-top: 4%;
     }
 
     .allNavigationBar {
@@ -417,6 +420,10 @@ footer input[type="submit"] {
 
     #montain {
         margin-left: -15px;
+    }
+
+    #identifyAccount {
+        margin-top: 80px;
     }
 
     #identifyAccount input {

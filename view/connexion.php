@@ -13,6 +13,7 @@ function autoload($className)
 spl_autoload_register('autoload');
 
 $controller = UserController::getInstance();
+$userManager = new UserManager();
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send'])) {
     if (!$controller->userManager->exists($_POST['pseudo'])) {

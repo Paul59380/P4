@@ -38,6 +38,14 @@ class NewsController
         return $news;
     }
 
+    public function getListAdmin()
+    {
+        $news = $this->newsManager->getListNews();
+
+        require('../view/frontend/adminBackNews.php');
+        return $news;
+    }
+
     public function addNews($idAuthor, $titleNews, $containsNews)
     {
         $addNews = $this->newsManager->addNews($idAuthor, $titleNews, $containsNews);

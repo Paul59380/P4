@@ -6,6 +6,7 @@
  * Time: 10:39
  */
 
+
 class UserManager
 {
     protected $db;
@@ -30,9 +31,7 @@ class UserManager
         if (isset($this->user[$userId])) {
             return $this->user[$userId];
         }
-
         $q = $this->db->query('SELECT * FROM users WHERE id = ' . $userId);
-
         while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $user = new User($data);
         }
@@ -52,19 +51,16 @@ class UserManager
 
     public function addVisitorAccount($infoAccount, $password)
     {
-        if(!$this->exists($infoAccount)){
+        if (!$this->exists($infoAccount)) {
             $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
             $q->execute(array(
                 ":infosAccount" => $infoAccount,
                 ":password_account" => $password,
                 ":id_profil" => 3
             ));
-        }
-        else {
+        } else {
             throw new Exception("Ce personnage existe déjà !");
-
         }
-
     }
 
     /**
@@ -79,10 +75,8 @@ class UserManager
         $data = $q->fetch();
 
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
-
             $delete = $this->db->prepare('DELETE FROM users WHERE pseudo = :pseudo');
             $delete->execute([':pseudo' => $infoAccount]);
-
             throw new Exception("Le compte à été supprimer");
         } else {
             throw new Exception("Erreur fatale lors de la suppression");
@@ -101,7 +95,6 @@ class UserManager
         $q->execute([':test' => $infoAccount]);
         $data = $q->fetch();
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
-            echo "<p>Vous êtes connecté !</p>";
             return $data;
         } else {
             throw new Exception('Mots de pass incorrect');
@@ -119,10 +112,9 @@ class UserManager
         $q->execute([':test' => $infoAccount]);
         $data = $q->fetch();
         if ($infoAccount == $data['pseudo'] && $data['id_profil'] == 3) {
-            echo "<p>Vous êtes connecté !</p>";
             return $data;
-        } else{
-           throw new Exception('Un mots de passe doit être renseigné pour un compte utilisateur');
+        } else {
+            throw new Exception('Un mots de passe doit être renseigné pour un compte utilisateur');
         }
     }
 

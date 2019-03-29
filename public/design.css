@@ -36,7 +36,7 @@ nav {
 }
 
 .logoMontain {
-    margin-right: 60%;
+    margin-right: 50%;
 }
 
 #contentHeader {
@@ -311,7 +311,34 @@ footer input[type="submit"] {
     font-size: 18px;
 }
 
+#textAdmin {
+    margin: 2% 35%;
+}
+
+#adminNews {
+    text-align: center;
+    padding: 20px;
+    color: #0F056B;
+    width: 100%;
+    border-top: 1px solid #0F056B;
+    border-bottom: 1px solid #0F056B;
+}
+
 @media all and (max-width: 1320px) {
+    #textAdmin {
+        margin: 2% 10%;
+    }
+
+    #adminNews {
+        text-align: center;
+        padding: 20px;
+        color: #0F056B;
+        width: 90%;
+        margin-top: 20%;
+        border-top: 1px solid #0F056B;
+        border-bottom: 1px solid #0F056B;
+    }
+
     #commentUser {
         width: 80%;
     }

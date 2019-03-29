@@ -57,9 +57,6 @@ foreach ($news as $new) {
                 ' ...<br/><strong><a style="text-decoration: none; color: red" href="getComments.php?news=' . $new->getId() . '">
                 ... Lire la suite</a> </strong>' ?>
             </p>
-            <p id="getComments">
-                <!--<button><a href="getComments.php?news=<?= $new->getId() ?>" ><strong>Accès aux commentaires</strong></a></button>!-->
-            </p>
         </div>
     </div>
     <?php

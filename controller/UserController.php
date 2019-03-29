@@ -6,6 +6,7 @@
  * Time: 11:45
  */
 
+
 class UserController
 {
     public $userManager;

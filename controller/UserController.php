@@ -8,7 +8,7 @@
 
 class UserController
 {
-    protected $userManager;
+    public $userManager;
     protected static $instance;
 
     protected function __construct()

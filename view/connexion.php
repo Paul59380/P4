@@ -12,18 +12,17 @@ function autoload($className)
 
 spl_autoload_register('autoload');
 
-$userManager = new UserManager();
 $controller = UserController::getInstance();
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send'])) {
-    if (!$userManager->exists($_POST['pseudo'])) {
+    if (!$controller->userManager->exists($_POST['pseudo'])) {
         $controller->createAccount();
         $controller->userAccount($userManager);
     } else {
         echo "<p class='error'>Ce personnage existe déjà !</p>";
     }
 } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
-    if (!$userManager->exists($_POST['pseudo'])) {
+    if (!$controller->userManager->exists($_POST['pseudo'])) {
         $controller->createAccount();
         $controller->visitorAccount($userManager);
     } else {

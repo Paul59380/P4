@@ -5,7 +5,7 @@ html, body {
     padding-bottom: 30px;
 }
 
-.error{
+.error {
     text-align: center;;
     color: red;
     font-size: 25px;
@@ -325,6 +325,7 @@ footer input[type="submit"] {
 }
 
 @media all and (max-width: 1320px) {
+
     #textAdmin {
         margin: 2% 10%;
     }
@@ -349,7 +350,7 @@ footer input[type="submit"] {
     }
 
     #footerRight input {
-         width: 70%;
+        width: 70%;
     }
 
     #footerRight textarea {
@@ -359,18 +360,22 @@ footer input[type="submit"] {
     #headerComment {
         display: none;
     }
+
     #contentHeader {
         display: none;
     }
 
-    .allNavigationBar li:nth-child(2), li:nth-child(3){
+    .allNavigationBar li:nth-child(1), li:nth-child(2), li:nth-child(3) {
         display: none;
         flex-wrap: wrap;
+        align-items: center;
+        margin-right: 10%;
     }
 
     .allNavigationBar li:nth-child(4), li:nth-child(5), li:nth-child(6) {
-        display: inline;
-        margin-left: 6px;
+        display: inline-block;
+        margin-right: 10%;
+        margin-top: 4%;
     }
 
     .allNavigationBar {
@@ -378,7 +383,7 @@ footer input[type="submit"] {
         font-size: 15px;
     }
 
-    .allNavigationBar strong{
+    .allNavigationBar strong {
         margin-left: -10px;
     }
 
@@ -395,7 +400,7 @@ footer input[type="submit"] {
         width: 100%;
     }
 
-    #imagePresentation img{
+    #imagePresentation img {
         width: 20%;
         margin-left: 40%;
         margin-right: 40%;
@@ -414,11 +419,11 @@ footer input[type="submit"] {
         margin-left: -15px;
     }
 
-    #identifyAccount input{
+    #identifyAccount input {
         width: 80%;
     }
 
-    #identifyAccount input[type="text"]{
+    #identifyAccount input[type="text"] {
         width: 80%;
     }
 }

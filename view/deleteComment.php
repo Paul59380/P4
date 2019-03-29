@@ -11,5 +11,11 @@ function autoload($className)
 spl_autoload_register('autoload');
 
 $controller = ReportedCommentController::getInstance();
-$controller->deleteComments($_GET['id'], $_GET['origin']);
-header('Location:adminComments.php');
+
+if(isset($_GET['id']) && isset($_GET['origin'])){
+    $controller->deleteComments($_GET['id'], $_GET['origin']);
+    header('Location:adminComments.php');
+} else {
+    $controller->validComment($_GET['id']);
+    header('Location:adminComments.php');
+}

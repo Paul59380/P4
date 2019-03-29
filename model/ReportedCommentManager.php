@@ -51,4 +51,12 @@ class ReportedCommentManager
             ":idOriginal" => $idOriginal
         ));
     }
+
+    public function validComment($idReportedComment)
+    {
+        $q = $this->db->prepare('DELETE FROM report_comment WHERE id= :idReported');
+        $q->execute(array(
+            ":idReported" => $idReportedComment
+        ));
+    }
 }

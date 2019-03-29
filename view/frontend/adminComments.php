@@ -15,9 +15,11 @@ foreach ($commentSigned as $comment) {
         </p>
         <p id="containsComment"><?= $comment->getReportedContent() ?> </p>
         <a href="updateComment.php?id=<?= $comment->getId() ?>">
-            <i style="color: green; padding-left: 10px" class="fas fa-pen-fancy"></i></a>
+            <i style="color: #288ba3; padding-left: 10px" class="fas fa-pen-fancy"></i></a>
         <a href="deleteComment.php?id=<?= $comment->getId() ?>&origin=<?= $comment->getIdComment() ?>">
             <i style="color: red; padding-left: 10px" class="fas fa-times-circle fa-1x"></i></a>
+        <a href="deleteComment.php?id=<?= $comment->getId() ?>">
+            <i style="color: #01991f; padding-left: 10px" class="far fa-check-circle"></i></a>
     </fieldset>
     <?php
 }

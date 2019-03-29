@@ -47,4 +47,10 @@ class ReportedCommentController
         $this->reportedCommentManager->deleteComment($idComment, $idOriginal);
         return $this->reportedCommentManager;
     }
+
+    public function validComment($idCommentSigned)
+    {
+        $this->reportedCommentManager->validComment($idCommentSigned);
+        return $this->reportedCommentManager;
+    }
 }

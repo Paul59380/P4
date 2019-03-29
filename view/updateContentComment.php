@@ -12,5 +12,5 @@ spl_autoload_register('autoload');
 
 $controller = ReportedCommentController::getInstance();
 $update = $controller->updateComments($_GET['id'], $_POST['textUpdate'], $_GET['idOrigin']);
-$id = $_GET['id'];
+$controller->validComment($_GET['id']);
 header('Location:adminComments.php');

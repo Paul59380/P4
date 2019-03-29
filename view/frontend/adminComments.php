@@ -8,7 +8,7 @@ foreach ($commentSigned as $comment) {
     ?>
     <fieldset id="reported_comment">
         <legend>De : <strong style="color:red"><?= $comment->getUser()->getPseudo() ?> </strong>
-        Signalé le : <strong><?= $comment->getReportingDate() ?></legend><br/></strong>
+        Posté le : <strong><?= $comment->getReportingDate() ?></legend><br/></strong>
         <p id="descriptComment">
             <?= $comment->getUser()->getPseudo() ?> <br/>
             <?= $comment->getReportingDate() ?>

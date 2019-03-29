@@ -12,55 +12,33 @@ function autoload($className)
 
 spl_autoload_register('autoload');
 
-$db = PDOFactory::connectedAtDataBase();
-$userManager = new UserManager($db);
-
-$identify = new UserController();
+$userManager = new UserManager();
+$controller = UserController::getInstance();
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send'])) {
-
     if (!$userManager->exists($_POST['pseudo'])) {
-        $identify->createAccount();
-
-        $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
-        $user = $userManager->getUser($data['id']);
-        $_SESSION['name'] = $user->getPseudo();
-        $_SESSION['id'] = $user->getId();
-        header('Location:index.php');
+        $controller->createAccount();
+        $controller->userAccount($userManager);
     } else {
-        echo "Ce personnage existe déjà !";
+        echo "<p class='error'>Ce personnage existe déjà !</p>";
     }
-
 } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
-
     if (!$userManager->exists($_POST['pseudo'])) {
-        $identify->createAccount();
-
-        $data = $userManager->checkAccountVisitor($_POST['pseudo']);
-        $user = $userManager->getUser($data['id']);
-        $_SESSION['name'] = $user->getPseudo();
-        $_SESSION['id'] = $user->getId();
-        header('Location:index.php');
+        $controller->createAccount();
+        $controller->visitorAccount($userManager);
     } else {
-        echo "<p style='text-align: center'>Le compte visiteur " . $_POST['pseudo'] .
+        echo "<p class='error'>Le compte visiteur " . $_POST['pseudo'] .
             " ne pas pas être crée car ce pseudo existe déjà !</p>";
     }
 } elseif (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['verify'])) {
-
-    $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
-    $user = $userManager->getUser($data['id']);
-    $_SESSION['name'] = $user->getPseudo();
-    $_SESSION['id'] = $user->getId();
-    header('Location:index.php');
-
+    try {
+        $controller->userAccount($userManager);
+    } catch (Exception $e) {
+        echo('<p class="error" ">Erreur : ' . $e->getMessage() . '</p>');
+    }
 } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['verify'])) {
 
-    if($_POST['password'] == ""){
-        $data = $userManager->checkAccountVisitor($_POST['pseudo']);
-        var_dump($data);
-        $user = $userManager->getUser($data['id']);
-        $_SESSION['name'] = $user->getPseudo();
-        $_SESSION['id'] = $user->getId();
-        header('Location:index.php');
+    if ($_POST['password'] == "") {
+        $controller->visitorAccount($userManager);
     }
 }

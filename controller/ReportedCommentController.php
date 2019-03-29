@@ -8,13 +8,26 @@
 
 class ReportedCommentController
 {
-    protected $db;
     protected $reportedCommentManager;
+    protected static $instance;
 
-    public function __construct()
+    protected function __construct()
     {
-        $this->db = PDOFactory::connectedAtDataBase();
-        $this->reportedCommentManager = new ReportedCommentManager($this->db);
+        $this->reportedCommentManager = new ReportedCommentManager();
+    }
+
+    protected function __clone()
+    {
+        // TODO: Implement __clone() method.
+    }
+
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new self;
+        }
+
+        return self::$instance;
     }
 
     public function getReportedComment($infoComment)

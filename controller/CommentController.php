@@ -8,13 +8,26 @@
 
 class CommentController
 {
-    protected $db;
     protected $commentManager;
+    protected static $instance;
 
-    public function __construct()
+    protected function __construct()
     {
-        $this->db = PDOFactory::connectedAtDataBase();
-        $this->commentManager = new CommentsManager($this->db);
+        $this->commentManager = new CommentsManager();
+    }
+
+    protected function __clone()
+    {
+        // TODO: Implement __clone() method.
+    }
+
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new self;
+        }
+
+        return self::$instance;
     }
 
     public function getComments()
@@ -23,7 +36,7 @@ class CommentController
             if ($_GET['news'] >= 0) {
 
                 $comments = $this->commentManager->getCommentsNews($_GET['news']);
-                $newsManager = new NewsManager($this->db);
+                $newsManager = new NewsManager();
                 $news = $newsManager->getNews($_GET['news']);
                 require('../view/frontend/commentView.php');
 

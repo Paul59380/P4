@@ -10,9 +10,9 @@ class ReportedCommentManager
 {
     protected $db;
 
-    public function __construct(PDO $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = PDOFactory::connectedAtDataBase();
     }
 
     public function getComment($infoComment)

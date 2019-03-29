@@ -10,7 +10,7 @@ function autoload($className)
 
 spl_autoload_register('autoload');
 
-$controller = new ReportedCommentController();
+$controller = ReportedCommentController::getInstance();
 $update = $controller->updateComments($_GET['id'], $_POST['textUpdate'], $_GET['idOrigin']);
 $id = $_GET['id'];
 header('Location:adminComments.php');

@@ -11,18 +11,14 @@ class NewsManager
     protected $db;
     protected $news;
 
-    /**
-     * @param mixed $db
-     */
-    public function __construct(PDO $db)
+
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = PDOFactory::connectedAtDataBase();
         $this->news = [];
     }
 
-    /**
-     * @return mixed|PDO
-     */
+
     public function getDb()
     {
         return $this->db;
@@ -39,7 +35,9 @@ class NewsManager
             return $this->news[$infoNews];
         }
 
-        $q = $this->db->query('SELECT * FROM news WHERE id = ' . $infoNews);
+        $q = $this->db->query('SELECT 
+       id, id_author, title_news, contains_news, DATE_FORMAT(date_create, \'%d/%m/%Y  à  %Hh%imn%ss\') AS
+         date_fr FROM news WHERE id = ' . $infoNews);
         while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $news = new News($data);
         }
@@ -51,7 +49,9 @@ class NewsManager
     public function getListNews()
     {
         $news = [];
-        $q = $this->db->query('SELECT * FROM news ORDER BY date_create DESC ');
+        $q = $this->db->query('SELECT
+       id, id_author, title_news, contains_news, DATE_FORMAT(date_create, \'%d/%m/%Y  à  %Hh%imn%ss\') AS
+         date_fr FROM news ORDER BY date_fr DESC ');
 
         while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
             $news[] = new News($data);

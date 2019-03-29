@@ -5,6 +5,12 @@ html, body {
     padding-bottom: 30px;
 }
 
+.error{
+    text-align: center;;
+    color: red;
+    font-size: 25px;
+}
+
 .allNavigationBar li {
     display: inline;
     margin-left: 20px;

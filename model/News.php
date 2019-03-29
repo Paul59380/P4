@@ -79,7 +79,7 @@ class News
     /**
      * @param mixed $date_create
      */
-    public function setDate_create($date_create)
+    public function setDate_fr($date_create)
     {
         $this->date_create = $date_create;
     }

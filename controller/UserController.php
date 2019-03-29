@@ -8,13 +8,26 @@
 
 class UserController
 {
-    protected $db;
     protected $userManager;
+    protected static $instance;
 
-    public function __construct()
+    protected function __construct()
     {
-        $this->db = PDOFactory::connectedAtDataBase();
-        $this->userManager = new UserManager($this->db);
+        $this->userManager = new UserManager();
+    }
+
+    protected function __clone()
+    {
+        // TODO: Implement __clone() method.
+    }
+
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new self;
+        }
+
+        return self::$instance;
     }
 
     public function createAccount()
@@ -30,5 +43,23 @@ class UserController
                 header('Location:index.php');
             }
         }
+    }
+
+    public function userAccount(UserManager $userManager)
+    {
+        $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
+        $user = $userManager->getUser($data['id']);
+        $_SESSION['name'] = $user->getPseudo();
+        $_SESSION['id'] = $user->getId();
+        header('Location:index.php');
+    }
+
+    public function visitorAccount(UserManager $userManager)
+    {
+        $data = $userManager->checkAccountVisitor($_POST['pseudo']);
+        $user = $userManager->getUser($data['id']);
+        $_SESSION['name'] = $user->getPseudo();
+        $_SESSION['id'] = $user->getId();
+        header('Location:index.php');
     }
 }

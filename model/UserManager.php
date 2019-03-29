@@ -11,9 +11,9 @@ class UserManager
     protected $db;
     private $user;
 
-    public function __construct(PDO $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = PDOFactory::connectedAtDataBase();
         $this->user = [];
     }
 
@@ -61,11 +61,17 @@ class UserManager
             ));
         }
         else {
-            echo "Ce personnage existe déjà !";
+            throw new Exception("Ce personnage existe déjà !");
+
         }
 
     }
 
+    /**
+     * @param $infoAccount
+     * @param $pass
+     * @throws Exception
+     */
     public function deleteAccount($infoAccount, $pass) // Check if the account exist and delete it
     {
         $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
@@ -77,12 +83,18 @@ class UserManager
             $delete = $this->db->prepare('DELETE FROM users WHERE pseudo = :pseudo');
             $delete->execute([':pseudo' => $infoAccount]);
 
-            echo "Le compte à été supprimer";
+            throw new Exception("Le compte à été supprimer");
         } else {
-            echo "Erreur fatale lors de la suppression";
+            throw new Exception("Erreur fatale lors de la suppression");
         }
     }
 
+    /**
+     * @param $infoAccount
+     * @param $pass
+     * @return mixed
+     * @throws Exception
+     */
     public function checkAccountUser($infoAccount, $pass) // Check if the account exist and return it
     {
         $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
@@ -92,11 +104,15 @@ class UserManager
             echo "<p>Vous êtes connecté !</p>";
             return $data;
         } else {
-            echo 'Mots de pass incorrect';
-            return "<p>Erreur fatale</p>";
+            throw new Exception('Mots de pass incorrect');
         }
     }
 
+    /**
+     * @param $infoAccount
+     * @return mixed
+     * @throws Exception
+     */
     public function checkAccountVisitor($infoAccount) // Check if the account exist and return it
     {
         $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
@@ -106,8 +122,7 @@ class UserManager
             echo "<p>Vous êtes connecté !</p>";
             return $data;
         } else{
-           echo "<p style='text-align: center'>Un mots de passe doit être renseigner pour un compte utilisateur</p>";
-           //throw new Exception('Erreur');
+           throw new Exception('Un mots de passe doit être renseigné pour un compte utilisateur');
         }
     }
 

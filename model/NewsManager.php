@@ -5,9 +5,8 @@
  * Date: 15/03/2019
  * Time: 14:55
  */
-require('../vendor/autoload.php');
-use model\PDOFactory;
 
+namespace model;
 class NewsManager
 {
     protected $db;
@@ -26,7 +25,7 @@ class NewsManager
         return $this->db;
     }
 
-    public function setDb(PDO $db)
+    public function setDb(\PDO $db)
     {
         $this->db = $db;
     }
@@ -40,7 +39,7 @@ class NewsManager
         $q = $this->db->query('SELECT 
        id, id_author, title_news, contains_news, DATE_FORMAT(date_create, \'%d/%m/%Y  à  %Hh%imn%ss\') AS
          date_fr FROM news WHERE id = ' . $infoNews);
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $news = new News($data);
         }
 
@@ -55,7 +54,7 @@ class NewsManager
        id, id_author, title_news, contains_news, DATE_FORMAT(date_create, \'%d/%m/%Y  à  %Hh%imn%ss\') AS
          date_fr FROM news ORDER BY id DESC ');
 
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $news[] = new News($data);
         }
         return $news;

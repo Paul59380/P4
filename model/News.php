@@ -5,6 +5,7 @@
  * Date: 15/03/2019
  * Time: 14:51
  */
+namespace model;
 
 class News
 {

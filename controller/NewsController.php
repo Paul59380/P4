@@ -5,7 +5,8 @@
  * Date: 28/03/2019
  * Time: 11:09
  */
-
+namespace controller;
+use model\NewsManager;
 
 class NewsController
 {

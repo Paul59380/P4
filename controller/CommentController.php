@@ -5,6 +5,9 @@
  * Date: 28/03/2019
  * Time: 11:31
  */
+namespace controller;
+use model\CommentsManager;
+use model\NewsManager;
 
 class CommentController
 {

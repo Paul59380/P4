@@ -6,6 +6,8 @@
  * Time: 14:22
  */
 
+namespace model;
+
 class CommentsManager
 {
     protected $db;
@@ -39,7 +41,7 @@ class CommentsManager
     public function getComment($infoComment)
     {
         $q = $this->db->query('SELECT * FROM comments WHERE id = ' . $infoComment);
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comment = new Comment($data);
         }
         return $comment;
@@ -50,7 +52,7 @@ class CommentsManager
         $comments = [];
 
         $q = $this->db->query('SELECT * FROM comments ORDER BY date_create DESC ');
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
         return $comments;
@@ -66,7 +68,7 @@ class CommentsManager
     {
         $comments = [];
         $q = $this->db->query('SELECT * FROM comments  WHERE id_news =' . $infosNews.' ORDER BY date_create DESC');
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
         return $comments;

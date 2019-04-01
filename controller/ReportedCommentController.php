@@ -6,6 +6,9 @@
  * Time: 13:52
  */
 
+namespace controller;
+use model\ReportedCommentManager;
+
 class ReportedCommentController
 {
     protected $reportedCommentManager;

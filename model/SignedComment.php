@@ -5,7 +5,7 @@
  * Date: 25/03/2019
  * Time: 11:02
  */
-
+namespace model;
 class SignedComment
 {
     protected $id;

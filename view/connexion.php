@@ -30,8 +30,11 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send
         echo('<p class="error" ">Erreur : ' . $e->getMessage() . '</p>');
     }
 } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['verify'])) {
-
-    if ($_POST['password'] == "") {
-        $controller->visitorAccount($userManager);
+    try{
+        if ($_POST['password'] == "") {
+            $controller->visitorAccount($userManager);
+        }
+    }catch ( Exception $e){
+        echo('<p class="error" ">Erreur : ' . $e->getMessage() . '</p>');
     }
 }

@@ -6,6 +6,8 @@
  * Time: 09:27
  */
 
+namespace model;
+
 class ReportedComment
 {
     protected $id;

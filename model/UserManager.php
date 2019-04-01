@@ -59,7 +59,7 @@ class UserManager
                 ":id_profil" => 3
             ));
         } else {
-            throw new Exception("Ce personnage existe déjà !");
+            throw new \Exception("Ce personnage existe déjà !");
         }
     }
 
@@ -77,9 +77,9 @@ class UserManager
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
             $delete = $this->db->prepare('DELETE FROM users WHERE pseudo = :pseudo');
             $delete->execute([':pseudo' => $infoAccount]);
-            throw new Exception("Le compte à été supprimer");
+            throw new \Exception("Le compte à été supprimer");
         } else {
-            throw new Exception("Erreur fatale lors de la suppression");
+            throw new \Exception("Erreur fatale lors de la suppression");
         }
     }
 
@@ -97,7 +97,7 @@ class UserManager
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
             return $data;
         } else {
-            throw new Exception('Mots de pass incorrect');
+            throw new \Exception('Mots de pass incorrect');
         }
     }
 
@@ -114,7 +114,7 @@ class UserManager
         if ($infoAccount == $data['pseudo'] && $data['id_profil'] == 3) {
             return $data;
         } else {
-            throw new Exception('Un mots de passe doit être renseigné pour un compte utilisateur');
+            throw new \Exception('Un mot de passe doit être renseigné pour un compte utilisateur');
         }
     }
 

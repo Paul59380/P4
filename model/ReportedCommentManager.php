@@ -6,6 +6,8 @@
  * Time: 09:41
  */
 
+namespace model;
+
 class ReportedCommentManager
 {
     protected $db;
@@ -18,7 +20,7 @@ class ReportedCommentManager
     public function getComment($infoComment)
     {
         $q = $this->db->query('SELECT * FROM report_comment WHERE id =' .$infoComment);
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)){
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)){
             $comment = new ReportedComment($data);
         }
         return $comment;

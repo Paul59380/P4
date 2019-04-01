@@ -5,7 +5,7 @@
  * Date: 15/03/2019
  * Time: 10:39
  */
-
+namespace model;
 
 class UserManager
 {
@@ -32,7 +32,7 @@ class UserManager
             return $this->user[$userId];
         }
         $q = $this->db->query('SELECT * FROM users WHERE id = ' . $userId);
-        while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $user = new User($data);
         }
         $this->user[$userId] = $user;

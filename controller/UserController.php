@@ -6,6 +6,8 @@
  * Time: 11:45
  */
 
+namespace controller;
+use model\UserManager;
 
 class UserController
 {

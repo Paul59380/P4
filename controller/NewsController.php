@@ -6,6 +6,7 @@
  * Time: 11:09
  */
 
+
 class NewsController
 {
     protected $newsManager;

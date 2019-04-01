@@ -5,6 +5,7 @@
  * Date: 15/03/2019
  * Time: 10:32
  */
+namespace model;
 
 class User
 {

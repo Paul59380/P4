@@ -11,7 +11,7 @@ html, body {
     font-size: 25px;
 }
 
-.allNavigationBar li {
+.allNavigationBarPublic li, .allNavigationBarAdmin li, .allNavigationBarConnect li {
     display: inline;
     margin-left: 20px;
     margin-top: -5px;
@@ -22,7 +22,7 @@ html, body {
     color: #0F056B;
 }
 
-.allNavigationBar a {
+.allNavigationBarPublic a, .allNavigationBarAdmin a, .allNavigationBarConnect a {
     text-decoration: none;
     font-weight: bold;
     color: #0F056B;
@@ -324,6 +324,14 @@ footer input[type="submit"] {
     border-bottom: 1px solid #0F056B;
 }
 
+.allNavigationBarConnect li:nth-child(3){
+    margin-left: 35%;
+}
+
+.allNavigationBarPublic li:nth-child(2){
+    margin-left: 35%;
+}
+
 @media all and (max-width: 1320px) {
 
     #textAdmin {
@@ -365,29 +373,29 @@ footer input[type="submit"] {
         display: none;
     }
 
-    .allNavigationBar li:nth-child(1) {
-        display: none;
-    }
-
-    .allNavigationBar li:nth-child(2) {
-        display: none;
-        flex-wrap: wrap;
-        align-items: center;
-        margin-right: 10%;
-    }
-
-    .allNavigationBar li:nth-child(4), li:nth-child(5), li:nth-child(6) {
-        display: inline-block;
-        margin-right: 10%;
-    }
-
-    .allNavigationBar {
+    .allNavigationBarPublic, .allNavigationBarAdmin, .allNavigationBarConnect {
         width: 100%;
         font-size: 15px;
     }
 
     .allNavigationBar strong {
         margin-left: -10px;
+    }
+
+    .allNavigationBarConnect li:nth-child(3){
+        margin-left: 27%;
+    }
+
+    .allNavigationBarPublic a:nth-child(2){
+       display: none;
+    }
+
+    .allNavigationBarPublic li:nth-child(2){
+        margin-left: 8%;
+    }
+
+    .allNavigationBarPublic a{
+        margin-left: 10%;
     }
 
     #headerHome {
@@ -432,6 +440,24 @@ footer input[type="submit"] {
 
     #identifyAccount input[type="text"] {
         width: 80%;
+    }
+}
+
+@media all and (max-width: 1035px) {
+    .allNavigationBarAdmin li {
+        display: none;
+    }
+
+    .allNavigationBarAdmin li:nth-child(4),li:nth-child(5),li:nth-child(6),li:nth-child(7){
+        display: inline;
+    }
+
+    .allNavigationBarConnect li:nth-child(3){
+        margin-left: -5%;
+    }
+
+    .allNavigationBarPublic a{
+        margin-left: 6%;
     }
 }
 

@@ -30,12 +30,11 @@ class Comment
             $this->$method($value);
         }
 
-        $db = PDOFactory::connectedAtDataBase();
-        $userManager = new UserManager($db);
+        $userManager = UserManager::getInstance();
         $this->user = $userManager->getUser($this->id_user);
 
-        $newsMangager = new NewsManager($db);
-        $this->news = $newsMangager->getNews($this->id_news);
+        $newsManager = NewsManager::getInstance();
+        $this->news = $newsManager->getNews($this->id_news);
     }
 
     /**

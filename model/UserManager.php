@@ -11,11 +11,22 @@ class UserManager
 {
     protected $db;
     private $user;
+    protected static $instance;
 
-    public function __construct()
+    protected function __construct()
     {
         $this->db = PDOFactory::connectedAtDataBase();
         $this->user = [];
+    }
+    
+    protected function __clone() {}
+    
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new self;
+        }
+        return self::$instance;
     }
 
     /**
@@ -59,7 +70,7 @@ class UserManager
                 ":id_profil" => 3
             ));
         } else {
-            throw new \Exception("Ce personnage existe déjà !");
+            throw new \Exception("Ce compte existe déjà !");
         }
     }
 
@@ -97,7 +108,7 @@ class UserManager
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
             return $data;
         } else {
-            throw new \Exception('Mots de pass incorrect');
+            throw new \Exception('Mot de passe incorrect');
         }
     }
 

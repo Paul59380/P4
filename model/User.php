@@ -27,21 +27,6 @@ class User
         }
     }
 
-    public function readNews($news)
-    {
-
-    }
-
-    public function commentNews()
-    {
-
-    }
-
-    public function checkName()
-    {
-
-    }
-
     public function setId_profil($idProfil)
     {
         $this->id_profil = $idProfil;

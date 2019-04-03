@@ -16,13 +16,10 @@ class UserController
 
     protected function __construct()
     {
-        $this->userManager = new UserManager();
+        $this->userManager = UserManager::getInstance();
     }
 
-    protected function __clone()
-    {
-        // TODO: Implement __clone() method.
-    }
+    protected function __clone() {}
 
     public static function getInstance()
     {
@@ -52,6 +49,7 @@ class UserController
     {
         $data = $userManager->checkAccountUser($_POST['pseudo'], $_POST['password']);
         $user = $userManager->getUser($data['id']);
+
         $_SESSION['name'] = $user->getPseudo();
         $_SESSION['id'] = $user->getId();
         header('Location:index.php');

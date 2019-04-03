@@ -15,13 +15,10 @@ class NewsController
 
     protected function __construct()
     {
-        $this->newsManager = new NewsManager();
+        $this->newsManager = NewsManager::getInstance();
     }
 
-    protected function __clone()
-    {
-        // TODO: Implement __clone() method.
-    }
+    protected function __clone(){}
 
     public static function getInstance()
     {

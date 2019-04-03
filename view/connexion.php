@@ -6,7 +6,7 @@ use controller\UserController;
 use model\UserManager;
 
 $controller = UserController::getInstance();
-$userManager = new UserManager();
+$userManager = UserManager::getInstance();
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['send'])) {
     if (!$controller->userManager->exists($_POST['pseudo'])) {

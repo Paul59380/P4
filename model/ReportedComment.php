@@ -30,8 +30,7 @@ class ReportedComment
             $this->$method($value);
         }
 
-        $db = PDOFactory::connectedAtDataBase();
-        $commentManager = new CommentsManager($db);
+        $commentManager = CommentsManager::getInstance();
         $data = $commentManager->getComment($this->id_comment);
         $this->originalComment = $data;
     }

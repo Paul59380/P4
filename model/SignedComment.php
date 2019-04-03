@@ -29,8 +29,7 @@ class SignedComment
             $this->$method($value);
         }
 
-        $db = PDOFactory::connectedAtDataBase();
-        $userManager = new UserManager($db);
+        $userManager = UserManager::getInstance();
         $this->user = $userManager->getUser($this->id_user);
     }
 

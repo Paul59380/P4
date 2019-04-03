@@ -16,13 +16,10 @@ class CommentController
 
     protected function __construct()
     {
-        $this->commentManager = new CommentsManager();
+        $this->commentManager = CommentsManager::getInstance();
     }
 
-    protected function __clone()
-    {
-        // TODO: Implement __clone() method.
-    }
+    protected function __clone() {}
 
     public static function getInstance()
     {
@@ -39,7 +36,7 @@ class CommentController
             if ($_GET['news'] >= 0) {
 
                 $comments = $this->commentManager->getCommentsNews($_GET['news']);
-                $newsManager = new NewsManager();
+                $newsManager = NewsManager::getInstance();
                 $news = $newsManager->getNews($_GET['news']);
                 require('../view/frontend/commentView.php');
 

@@ -11,10 +11,21 @@ namespace model;
 class ReportedCommentManager
 {
     protected $db;
+    protected static $instance;
 
-    public function __construct()
+    protected function __construct()
     {
         $this->db = PDOFactory::connectedAtDataBase();
+    }
+
+    protected function __clone() {}
+
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
     public function getComment($infoComment)

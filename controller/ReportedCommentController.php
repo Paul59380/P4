@@ -16,13 +16,10 @@ class ReportedCommentController
 
     protected function __construct()
     {
-        $this->reportedCommentManager = new ReportedCommentManager();
+        $this->reportedCommentManager = ReportedCommentManager::getInstance();
     }
 
-    protected function __clone()
-    {
-        // TODO: Implement __clone() method.
-    }
+    protected function __clone() {}
 
     public static function getInstance()
     {

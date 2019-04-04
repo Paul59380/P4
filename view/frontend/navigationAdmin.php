@@ -2,7 +2,8 @@
     <ul class="allNavigationBarAdmin">
         <?php
         if (isset($_SESSION['name'])) {
-            echo "<strong><a style='color:red' href='index.php'> Admin :</strong></a><li id='userSession'>" . $_SESSION['name'] . "</li>";
+            echo "<strong><a style='color:red' href='index.php'> Admin :</strong></a><li id='userSession'>"
+                . htmlspecialchars($_SESSION['name']) . "</li>";
         };
         ?>
         <li class="logoMontain"><a href="index.php"> <i class="fas fa-igloo fa-2x"></i> </a></li>

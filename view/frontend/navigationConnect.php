@@ -2,7 +2,7 @@
     <ul class="allNavigationBarConnect">
         <?php
         if (isset($_SESSION['name'])) {
-            echo "<li id='userSession'><a style='color: #01991f' href='index.php'> " . $_SESSION['name'] . "</a></li>";
+            echo "<li id='userSession'><a style='color: #01991f' href='index.php'> " . htmlspecialchars($_SESSION['name']) . "</a></li>";
         };
         ?>
         <li class="logoMontain"><a href="index.php"> <i class="fas fa-igloo fa-2x"></i> </a></li>

@@ -7,7 +7,7 @@ include('sectionForm.php');
         <p>
             <label>
                 <em> Nom d'utilisateur : </em><br/>
-                <input type="text" name="pseudo"/>
+                <input type="text" name="pseudo" required/>
             </label>
         </p>
 

@@ -89,8 +89,8 @@ class UserManager
 
     public function deleteAccount($infoAccount, $pass) // Check if the account exist and delete it
     {
-        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :test ');
-        $q->execute([':test' => $infoAccount]);
+        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :pseudo ');
+        $q->execute([':pseudo' => $infoAccount]);
         $data = $q->fetch();
 
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
@@ -104,8 +104,8 @@ class UserManager
 
     public function checkAccountUser($infoAccount, $pass) // Check if the account exist and return it
     {
-        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :test ');
-        $q->execute([':test' => $infoAccount]);
+        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :pseudo ');
+        $q->execute([':pseudo' => $infoAccount]);
         $data = $q->fetch();
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
             return $data;
@@ -116,8 +116,8 @@ class UserManager
 
     public function checkAccountVisitor($infoAccount) // Check if the account exist and return it
     {
-        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :test ');
-        $q->execute([':test' => $infoAccount]);
+        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :pseudo ');
+        $q->execute([':pseudo' => $infoAccount]);
         $data = $q->fetch();
         if ($infoAccount == $data['pseudo'] && $data['id_role'] == 3) {
             return $data;

@@ -31,9 +31,9 @@ class ReportedCommentController
 
     public function getReportedComment($infoComment)
     {
-        $testComment = $this->reportedCommentManager->getComment($infoComment);
+        $Comment = $this->reportedCommentManager->getComment($infoComment);
 
-        return $testComment;
+        return $Comment;
     }
 
     public function updateComments($id, $content, $idOriginal)

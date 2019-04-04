@@ -26,7 +26,7 @@
            <?php
             if (isset($_GET['news'])) {
                 if ($_SESSION['name'] == "Jean Frtrch") {
-                    echo $news->getNews($_GET['news'])->getTitleNews();
+                    echo htmlspecialchars($news->getNews($_GET['news'])->getTitleNews());
                 }
             }
             ?>">
@@ -37,7 +37,7 @@
         <?php
         if (isset($_GET['news'])) {
             if ($_SESSION['name'] == "Jean Frtrch") {
-                echo $news->getNews($_GET['news'])->getContainsNews();
+                echo htmlspecialchars($news->getNews($_GET['news'])->getContainsNews());
             }
         }
         ?>

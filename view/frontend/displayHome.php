@@ -53,7 +53,7 @@ foreach ($news as $new) {
                 <span> mis en ligne le : <?= htmlspecialchars($new->getDateCreate()) ?> </span> <br/>
             </h2>
             <p id="contains_news">
-                <?= substr($new->getContainsNews(), 0, 580) .
+                <?= substr(htmlspecialchars($new->getContainsNews()), 0, 580) .
                 ' ...<br/><strong><a style="text-decoration: none; color: red" href="index.php?action=getComments&news=' . $new->getId() . '">
                 ... Lire la suite</a> </strong>' ?>
             </p>

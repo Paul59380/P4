@@ -4,20 +4,20 @@ include('sectionComment.php');
 ?>
 
 <fieldset id="reported_comment">
-    <legend>De : <strong style="color:red"><?= $test->getOriginalComment()->getUser()->getPseudo() ?> </strong>
-        Signalé le : <strong><?= $test->getReportingDate() ?></legend>
+    <legend>De : <strong style="color:red"><?= htmlspecialchars($reportedComment->getOriginalComment()->getUser()->getPseudo()) ?> </strong>
+        Signalé le : <strong><?= $reportedComment->getReportingDate() ?></legend>
     <br/></strong>
     <p id="descriptComment">
-        <?= $test->getOriginalComment()->getUser()->getPseudo() ?> <br/>
-        <?= $test->getReportingDate() ?>
+        <?= htmlspecialchars($reportedComment->getOriginalComment()->getUser()->getPseudo()) ?> <br/>
+        <?= $reportedComment->getReportingDate() ?>
     </p>
-    <p id="containsComment"><?= $test->getReportedContent() ?> </p>
+    <p id="containsComment"><?= htmlspecialchars($reportedComment->getReportedContent()) ?> </p>
 </fieldset>
 
 <div style="margin-top: 80px" id="identifyAccount">
-    <form action="index.php?action=updateContentComment&id=<?= $test->getId() ?>
-    &idOrigin=<?= $test->getOriginalComment()->getId() ?>" method="post">
-        <textarea style="height: 180px; width: 20%" name="textUpdate"><?= $test->getReportedContent() ?></textarea>
+    <form action="index.php?action=updateContentComment&id=<?= $reportedComment->getId() ?>
+    &idOrigin=<?= $reportedComment->getOriginalComment()->getId() ?>" method="post">
+        <textarea style="height: 180px; width: 20%" name="textUpdate"><?= htmlspecialchars($reportedComment->getReportedContent()) ?></textarea>
         <br/>
         <input style="margin-bottom: 50px;" type="submit" name="update" value="Modifier le contenu">
     </form>

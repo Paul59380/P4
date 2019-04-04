@@ -25,19 +25,18 @@ if (!isset($_GET['action'])) {
 } elseif ($_GET['action'] == "signedComment" && isset($_GET['news']) && isset($_GET['comment'])) {
     $controller = CommentController::getInstance();
 
-    $test = $controller->getComment($_GET['comment']);
+    $originalComment = $controller->getComment($_GET['comment']);
 
     $insert = $controller->signedComment(
         $_GET['comment'],
         $_GET['news'],
-        $test->getUser()->getId(),
-        $test->getContainsComment(),
-        $test->getDateCreate());
-
+        $originalComment->getUser()->getId(),
+        $originalComment->getContainsComment(),
+        $originalComment->getDateCreate());
     header('Location:index.php?action=getComments&news=' . $_GET['news']);
 } elseif ($_GET['action'] == "updateComment" && isset($_GET['id'])) {
     $controller = ReportedCommentController::getInstance();
-    $test = $controller->getReportedComment($_GET['id']);
+    $reportedComment = $controller->getReportedComment($_GET['id']);
     require('frontend/updateComment.php');
 } elseif ($_GET['action'] == "updateContentComment" && isset($_GET['id'])) {
     $controller = ReportedCommentController::getInstance();

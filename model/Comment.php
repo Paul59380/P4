@@ -5,6 +5,7 @@
  * Date: 15/03/2019
  * Time: 14:12
  */
+
 namespace model;
 
 class Comment
@@ -16,7 +17,6 @@ class Comment
     protected $date_create;
     protected $user;
     protected $news;
-
 
     public function __construct($data)
     {
@@ -60,6 +60,11 @@ class Comment
         $this->user = $news;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @param mixed $id
      */
@@ -68,9 +73,9 @@ class Comment
         $this->id = $id;
     }
 
-    public function getId()
+    public function getIdUser()
     {
-        return $this->id;
+        return $this->id_user;
     }
 
     /**
@@ -81,9 +86,9 @@ class Comment
         $this->id_user = $id_user;
     }
 
-    public function getIdUser()
+    public function getIdNews()
     {
-        return $this->id_user;
+        return $this->id_news;
     }
 
     /**
@@ -94,9 +99,9 @@ class Comment
         $this->id_news = $id_news;
     }
 
-    public function getIdNews()
+    public function getContainsComment()
     {
-        return $this->id_news;
+        return $this->contains_comment;
     }
 
     /**
@@ -107,9 +112,9 @@ class Comment
         $this->contains_comment = $comment;
     }
 
-    public function getContainsComment()
+    public function getDateCreate()
     {
-        return $this->contains_comment;
+        return $this->date_create;
     }
 
     /**
@@ -118,10 +123,5 @@ class Comment
     public function setDate_create($date_create)
     {
         $this->date_create = $date_create;
-    }
-
-    public function getDateCreate()
-    {
-        return $this->date_create;
     }
 }

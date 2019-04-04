@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -11,7 +10,8 @@ session_start();
 <link href="style.css" rel="stylesheet" type="text/css">
 <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
 <meta content="Site web de Jean Forteroche" name="description"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+      integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
 
 <head>
     <title>Title</title>

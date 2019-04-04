@@ -5,7 +5,8 @@ include('sectionComment.php');
 
 <fieldset id="reported_comment">
     <legend>De : <strong style="color:red"><?= $test->getOriginalComment()->getUser()->getPseudo() ?> </strong>
-        Signalé le : <strong><?= $test->getReportingDate() ?></legend><br/></strong>
+        Signalé le : <strong><?= $test->getReportingDate() ?></legend>
+    <br/></strong>
     <p id="descriptComment">
         <?= $test->getOriginalComment()->getUser()->getPseudo() ?> <br/>
         <?= $test->getReportingDate() ?>
@@ -14,9 +15,10 @@ include('sectionComment.php');
 </fieldset>
 
 <div style="margin-top: 80px" id="identifyAccount">
-    <form action="updateContentComment.php?id=<?= $test->getId() ?>
+    <form action="index.php?action=updateContentComment&id=<?= $test->getId() ?>
     &idOrigin=<?= $test->getOriginalComment()->getId() ?>" method="post">
-        <textarea style="height: 180px; width: 20%" name="textUpdate"><?= $test->getReportedContent() ?></textarea> <br/>
+        <textarea style="height: 180px; width: 20%" name="textUpdate"><?= $test->getReportedContent() ?></textarea>
+        <br/>
         <input style="margin-bottom: 50px;" type="submit" name="update" value="Modifier le contenu">
     </form>
 </div>

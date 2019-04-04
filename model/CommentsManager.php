@@ -10,21 +10,20 @@ namespace model;
 
 class CommentsManager
 {
-    protected $db;
     protected static $instance;
+    protected $db;
 
     protected function __construct()
     {
         $this->db = PDOFactory::connectedAtDataBase();
     }
 
-    protected function __clone() {}
-
     public static function getInstance()
     {
-        if(!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             self::$instance = new self;
         }
+
         return self::$instance;
     }
 
@@ -38,7 +37,6 @@ class CommentsManager
 
     public function addComment($idUser, $getUrlIdNews, $containsComment)
     {
-
         $q = $this->db->prepare('INSERT INTO comments(id_user, id_news, contains_comment) 
         VALUE (:id_user, :url_Value, :content)');
 
@@ -55,6 +53,7 @@ class CommentsManager
         while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comment = new Comment($data);
         }
+
         return $comment;
     }
 
@@ -66,6 +65,7 @@ class CommentsManager
         while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
+
         return $comments;
     }
 
@@ -78,10 +78,11 @@ class CommentsManager
     public function getCommentsNews($infosNews)
     {
         $comments = [];
-        $q = $this->db->query('SELECT * FROM comments  WHERE id_news =' . $infosNews.' ORDER BY date_create DESC');
+        $q = $this->db->query('SELECT * FROM comments  WHERE id_news =' . $infosNews . ' ORDER BY date_create DESC');
         while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
+
         return $comments;
     }
 
@@ -98,5 +99,9 @@ class CommentsManager
             ":contains_comment" => $contains_comment,
             ":date_create" => $date
         ));
+    }
+
+    protected function __clone()
+    {
     }
 }

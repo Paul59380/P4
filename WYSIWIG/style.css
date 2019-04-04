@@ -21,11 +21,11 @@
     border-left: none;
 }
 
-#mytextarea{
+#mytextarea {
     height: 500px;
 }
 
-#TinyMCE{
+#TinyMCE {
     margin-left: 40%;
     border: 2mm ridge #01991f;
     border-radius: 3px;

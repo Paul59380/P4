@@ -5,12 +5,13 @@
  * Date: 15/03/2019
  * Time: 10:32
  */
+
 namespace model;
 
 class User
 {
     protected $id;
-    protected $id_profil;
+    protected $id_role;
     protected $pseudo;
     protected $password;
 
@@ -27,19 +28,14 @@ class User
         }
     }
 
-    public function setId_profil($idProfil)
+    public function getIdRole()
     {
-        $this->id_profil = $idProfil;
+        return $this->id_role;
     }
 
-    public function getIdProfil()
+    public function setId_role($idRole)
     {
-        return $this->id_profil;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
+        $this->id_role = $idRole;
     }
 
     public function getId()
@@ -47,9 +43,9 @@ class User
         return $this->id;
     }
 
-    public function setPseudo($pseudo)
+    public function setId($id)
     {
-        $this->pseudo = $pseudo;
+        $this->id = $id;
     }
 
     public function getPseudo()
@@ -57,13 +53,18 @@ class User
         return $this->pseudo;
     }
 
-    public function setPassword($password)
+    public function setPseudo($pseudo)
     {
-        $this->password = $password;
+        $this->pseudo = $pseudo;
     }
 
     public function getPassword()
     {
         return $this->password;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
     }
 }

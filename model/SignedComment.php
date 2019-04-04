@@ -5,6 +5,7 @@
  * Date: 25/03/2019
  * Time: 11:02
  */
+
 namespace model;
 class SignedComment
 {
@@ -15,7 +16,6 @@ class SignedComment
     protected $reported_content;
     protected $reporting_date;
     protected $user;
-
 
     public function __construct($data)
     {
@@ -56,17 +56,17 @@ class SignedComment
         $this->id = $id;
     }
 
+    public function getIdComment()
+    {
+        return $this->id_comment;
+    }
+
     /**
      * @param mixed $id_comment
      */
     public function setId_comment($id_comment)
     {
         $this->id_comment = $id_comment;
-    }
-
-    public function getIdComment()
-    {
-        return $this->id_comment;
     }
 
     /**

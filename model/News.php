@@ -5,6 +5,7 @@
  * Date: 15/03/2019
  * Time: 14:51
  */
+
 namespace model;
 
 class News
@@ -28,14 +29,19 @@ class News
         }
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
     }
 
-    public function getId()
+    public function getIdAuthor()
     {
-        return $this->id;
+        return $this->id_author;
     }
 
     /**
@@ -46,9 +52,9 @@ class News
         $this->id_author = $id_author;
     }
 
-    public function getIdAuthor()
+    public function getTitleNews()
     {
-        return $this->id_author;
+        return $this->title_news;
     }
 
     /**
@@ -59,9 +65,9 @@ class News
         $this->title_news = $title_news;
     }
 
-    public function getTitleNews()
+    public function getContainsNews()
     {
-        return $this->title_news;
+        return $this->contains_news;
     }
 
     /**
@@ -70,11 +76,6 @@ class News
     public function setContains_news($contains_news)
     {
         $this->contains_news = $contains_news;
-    }
-
-    public function getContainsNews()
-    {
-        return $this->contains_news;
     }
 
     /**

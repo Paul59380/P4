@@ -7,23 +7,22 @@
  */
 
 namespace controller;
+
 use model\UserManager;
 
 class UserController
 {
-    public $userManager;
     protected static $instance;
+    public $userManager;
 
     protected function __construct()
     {
         $this->userManager = UserManager::getInstance();
     }
 
-    protected function __clone() {}
-
     public static function getInstance()
     {
-        if(!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             self::$instance = new self;
         }
 
@@ -33,11 +32,9 @@ class UserController
     public function createAccount()
     {
         if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['send'])) {
-
             if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                 $this->userManager->addUserAccount($_POST['pseudo'], password_hash($_POST['password'], PASSWORD_DEFAULT));
             } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
-
                 $this->userManager->addVisitorAccount($_POST['pseudo'], $_POST['password']);
             } else {
                 header('Location:index.php');
@@ -62,5 +59,9 @@ class UserController
         $_SESSION['name'] = $user->getPseudo();
         $_SESSION['id'] = $user->getId();
         header('Location:index.php');
+    }
+
+    protected function __clone()
+    {
     }
 }

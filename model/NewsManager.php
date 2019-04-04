@@ -9,10 +9,9 @@
 namespace model;
 class NewsManager
 {
+    protected static $instance;
     protected $db;
     protected $news;
-    protected static $instance;
-
 
     protected function __construct()
     {
@@ -20,13 +19,12 @@ class NewsManager
         $this->news = [];
     }
 
-    protected function __clone() {}
-
     public static function getInstance()
     {
-        if(!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
@@ -54,6 +52,7 @@ class NewsManager
         }
 
         $this->news[$infoNews] = $news;
+
         return $news;
     }
 
@@ -67,6 +66,7 @@ class NewsManager
         while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $news[] = new News($data);
         }
+
         return $news;
     }
 
@@ -84,7 +84,7 @@ class NewsManager
     public function updateNews($id, $titleNews, $containsNews)
     {
         $q = $this->db->prepare('UPDATE news SET 
-                title_news = :titleNews, contains_news = :containsNews WHERE id ='.$id);
+                title_news = :titleNews, contains_news = :containsNews WHERE id =' . $id);
         $q->execute(array(
             ":titleNews" => $titleNews,
             ":containsNews" => $containsNews
@@ -97,5 +97,9 @@ class NewsManager
         $q->execute(array(
             ":id" => $idNews
         ));
+    }
+
+    protected function __clone()
+    {
     }
 }

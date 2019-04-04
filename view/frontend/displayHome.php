@@ -38,10 +38,10 @@ foreach ($news as $new) {
                 <?php
                 if (isset($_SESSION['name'])) {
                     if ($_SESSION['name'] == "Jean Frtrch") {
-                        echo '<a href="adminWysiwyg.php?news=' .
+                        echo '<a href="index.php?action=adminWysiwyg&news=' .
                             htmlspecialchars($new->getId()) .
                             '"><strong style="color: green"><i class="fas fa-pencil-alt fa-1x"></i></strong></a>';
-                        echo '<a href="adminWysiwyg.php?delete=0&news=' .
+                        echo '<a href="index.php?action=adminWysiwyg&delete=0&news=' .
                             htmlspecialchars($new->getId()) .
                             '"><strong style="margin-left: 20px; color: red"><i class="fas fa-times-circle fa-1x"></i></strong></a>';
                     }
@@ -54,7 +54,7 @@ foreach ($news as $new) {
             </h2>
             <p id="contains_news">
                 <?= substr($new->getContainsNews(), 0, 580) .
-                ' ...<br/><strong><a style="text-decoration: none; color: red" href="getComments.php?news=' . $new->getId() . '">
+                ' ...<br/><strong><a style="text-decoration: none; color: red" href="index.php?action=getComments&news=' . $new->getId() . '">
                 ... Lire la suite</a> </strong>' ?>
             </p>
         </div>

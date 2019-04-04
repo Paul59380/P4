@@ -35,6 +35,11 @@ class ReportedComment
         $this->originalComment = $data;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @param mixed $id
      */
@@ -43,9 +48,9 @@ class ReportedComment
         $this->id = $id;
     }
 
-    public function getId()
+    public function getIdNews()
     {
-        return $this->id;
+        return $this->id_news;
     }
 
     /**
@@ -56,9 +61,9 @@ class ReportedComment
         $this->id_news = $id_news;
     }
 
-    public function getIdNews()
+    public function getIdUser()
     {
-        return $this->id_news;
+        return $this->id_user;
     }
 
     /**
@@ -69,9 +74,9 @@ class ReportedComment
         $this->id_user = $id_user;
     }
 
-    public function getIdUser()
+    public function getIdComment()
     {
-        return $this->id_user;
+        return $this->id_comment;
     }
 
     /**
@@ -82,9 +87,9 @@ class ReportedComment
         $this->id_comment = $id_comment;
     }
 
-    public function getIdComment()
+    public function getReportedContent()
     {
-        return $this->id_comment;
+        return $this->reported_content;
     }
 
     /**
@@ -95,11 +100,10 @@ class ReportedComment
         $this->reported_content = $reported_content;
     }
 
-    public function getReportedContent()
+    public function getReportingDate()
     {
-        return $this->reported_content;
+        return $this->reporting_date;
     }
-
 
     /**
      * @param mixed $reporting_date
@@ -109,10 +113,9 @@ class ReportedComment
         $this->reporting_date = $reporting_date;
     }
 
-
-    public function getReportingDate()
+    public function getOriginalComment()
     {
-        return $this->reporting_date;
+        return $this->originalComment;
     }
 
     /**
@@ -121,10 +124,5 @@ class ReportedComment
     public function setOriginal_comment($originalComment)
     {
         $this->originalComment = $originalComment;
-    }
-
-    public function getOriginalComment()
-    {
-        return $this->originalComment;
     }
 }

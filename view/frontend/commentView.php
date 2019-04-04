@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 ob_start();
 include('sectionComment.php')
 ?>
@@ -26,7 +26,7 @@ foreach ($comments as $comment) {
         <p id="descriptComment">
             <?= htmlspecialchars($comment->getUser()->getPseudo()) ?> <br/>
             <?= $comment->getDateCreate() ?>
-            <a href="signedComment.php?news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">
+            <a href="index.php?action=signedComment&news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">
                 <i style="color: #f44542; padding-left: 10px" class="fas fa-exclamation-triangle fa-1x"></i></a>
         </p>
         <p id="containsComment"><?= htmlspecialchars($comment->getContainsComment()) ?> </p>
@@ -44,7 +44,8 @@ foreach ($comments as $comment) {
             ?> , n'hésitez pas à laisser votre avis ! </em></h2>
     <footer>
         <div id="footerRight">
-            <form action="addComment.php?id=<?= $news->getId() ?>&idUser=<?= $_SESSION['id'] ?>" method="post">
+            <form action="index.php?action=addComment&id=<?= $news->getId() ?>&idUser=<?= $_SESSION['id'] ?>"
+                  method="post">
                 <label><strong>Pseudo :</strong><br/>
                     <input type="text" name="pseudoComment" value="<?php if (isset($_SESSION['name'])) {
                         echo htmlspecialchars($_SESSION['name']);

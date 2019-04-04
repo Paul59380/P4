@@ -10,30 +10,30 @@ namespace model;
 
 class ReportedCommentManager
 {
-    protected $db;
     protected static $instance;
+    protected $db;
 
     protected function __construct()
     {
         $this->db = PDOFactory::connectedAtDataBase();
     }
 
-    protected function __clone() {}
-
     public static function getInstance()
     {
-        if(!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     public function getComment($infoComment)
     {
-        $q = $this->db->query('SELECT * FROM report_comment WHERE id =' .$infoComment);
-        while ($data = $q->fetch(\PDO::FETCH_ASSOC)){
+        $q = $this->db->query('SELECT * FROM report_comment WHERE id =' . $infoComment);
+        while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $comment = new ReportedComment($data);
         }
+
         return $comment;
     }
 
@@ -71,5 +71,9 @@ class ReportedCommentManager
         $q->execute(array(
             ":idReported" => $idReportedComment
         ));
+    }
+
+    protected function __clone()
+    {
     }
 }

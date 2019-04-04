@@ -5,27 +5,27 @@
  * Date: 15/03/2019
  * Time: 10:39
  */
+
 namespace model;
 
 class UserManager
 {
+    protected static $instance;
     protected $db;
     private $user;
-    protected static $instance;
 
     protected function __construct()
     {
         $this->db = PDOFactory::connectedAtDataBase();
         $this->user = [];
     }
-    
-    protected function __clone() {}
-    
+
     public static function getInstance()
     {
-        if(!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             self::$instance = new self;
         }
+
         return self::$instance;
     }
 
@@ -42,51 +42,59 @@ class UserManager
         if (isset($this->user[$userId])) {
             return $this->user[$userId];
         }
-        $q = $this->db->query('SELECT * FROM users WHERE id = ' . $userId);
+        $q = $this->db->query('SELECT * FROM user WHERE id = ' . $userId);
         while ($data = $q->fetch(\PDO::FETCH_ASSOC)) {
             $user = new User($data);
         }
         $this->user[$userId] = $user;
+
         return $user;
     }
 
     public function addUserAccount($infoAccount, $password)
     {
-        $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
+        $q = $this->db->prepare('INSERT INTO user (pseudo, password, id_role) VALUE (:infosAccount, :password_account, :id_role)');
         $q->execute(array(
             ":infosAccount" => $infoAccount,
             ":password_account" => $password,
-            ":id_profil" => 2
+            ":id_role" => 2
         ));
     }
 
     public function addVisitorAccount($infoAccount, $password)
     {
         if (!$this->exists($infoAccount)) {
-            $q = $this->db->prepare('INSERT INTO users (pseudo, password, id_profil) VALUE (:infosAccount, :password_account, :id_profil)');
+            $q = $this->db->prepare('INSERT INTO user (pseudo, password, id_role) VALUE (:infosAccount, :password_account, :id_role)');
             $q->execute(array(
                 ":infosAccount" => $infoAccount,
                 ":password_account" => $password,
-                ":id_profil" => 3
+                ":id_role" => 3
             ));
         } else {
             throw new \Exception("Ce compte existe déjà !");
         }
     }
 
-    /**
-     * @param $infoAccount
-     * @param $pass
-     * @throws Exception
-     */
+    public function exists($info)
+    {
+        if (is_int($info)) {
+            return (bool)$this->db->query('SELECT * FROM user WHERE id=' . $info)->fetchColumn();
+        } else {
+            $q = $this->db->prepare('SELECT * FROM user WHERE pseudo = :pseudo');
+            $q->execute([':pseudo' => $info]);
+
+            return $q->fetchColumn();
+        }
+    }
+
     public function deleteAccount($infoAccount, $pass) // Check if the account exist and delete it
     {
-        $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
+        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :test ');
         $q->execute([':test' => $infoAccount]);
         $data = $q->fetch();
 
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
-            $delete = $this->db->prepare('DELETE FROM users WHERE pseudo = :pseudo');
+            $delete = $this->db->prepare('DELETE FROM user WHERE pseudo = :pseudo');
             $delete->execute([':pseudo' => $infoAccount]);
             throw new \Exception("Le compte à été supprimer");
         } else {
@@ -94,15 +102,9 @@ class UserManager
         }
     }
 
-    /**
-     * @param $infoAccount
-     * @param $pass
-     * @return mixed
-     * @throws Exception
-     */
     public function checkAccountUser($infoAccount, $pass) // Check if the account exist and return it
     {
-        $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
+        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :test ');
         $q->execute([':test' => $infoAccount]);
         $data = $q->fetch();
         if ($infoAccount == $data['pseudo'] && password_verify($pass, $data['password'])) {
@@ -112,51 +114,19 @@ class UserManager
         }
     }
 
-    /**
-     * @param $infoAccount
-     * @return mixed
-     * @throws Exception
-     */
     public function checkAccountVisitor($infoAccount) // Check if the account exist and return it
     {
-        $q = $this->db->prepare('SELECT * FROM  users WHERE pseudo = :test ');
+        $q = $this->db->prepare('SELECT * FROM  user WHERE pseudo = :test ');
         $q->execute([':test' => $infoAccount]);
         $data = $q->fetch();
-        if ($infoAccount == $data['pseudo'] && $data['id_profil'] == 3) {
+        if ($infoAccount == $data['pseudo'] && $data['id_role'] == 3) {
             return $data;
         } else {
             throw new \Exception('Un mot de passe doit être renseigné pour un compte utilisateur');
         }
     }
 
-    public function exists($info)
+    protected function __clone()
     {
-        if (is_int($info)) {
-            return (bool)$this->db->query('SELECT * FROM users WHERE id=' . $info)->fetchColumn();
-        } else {
-            $q = $this->db->prepare('SELECT * FROM users WHERE pseudo = :pseudo');
-            $q->execute([':pseudo' => $info]);
-            return $q->fetchColumn();
-        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

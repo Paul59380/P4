@@ -49,7 +49,6 @@ class UserController
 
         $_SESSION['name'] = $user->getPseudo();
         $_SESSION['id'] = $user->getId();
-        header('Location:index.php');
     }
 
     public function visitorAccount(UserManager $userManager)

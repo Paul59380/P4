@@ -26,7 +26,7 @@ foreach ($comments as $comment) {
         <p id="descriptComment">
             <?= htmlspecialchars($comment->getUser()->getPseudo()) ?> <br/>
             <?= $comment->getDateCreate() ?>
-            <a href="index.php?action=signedComment&news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">
+            <a title="Signaler" href="index.php?action=signedComment&news=<?= $news->getId() ?>&comment=<?= $comment->getId() ?>">
                 <i style="color: #f44542; padding-left: 10px" class="fas fa-exclamation-triangle fa-1x"></i></a>
         </p>
         <p id="containsComment"><?= htmlspecialchars($comment->getContainsComment()) ?> </p>

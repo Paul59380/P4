@@ -16,10 +16,10 @@ foreach ($news as $new) {
                     if ($_SESSION['name'] == "Jean Frtrch") {
                         echo '<a href="index.php?action=adminWysiwyg&news=' .
                             htmlspecialchars($new->getId()) .
-                            '"><strong style="color: green"><i class="fas fa-pencil-alt fa-1x"></i></strong></a>';
+                            '"><strong style="color: green"><i title="Modifier la news" class="fas fa-pencil-alt fa-1x"></i></strong></a>';
                         echo '<a href="index.php?action=adminWysiwyg&delete=0&news=' .
                             htmlspecialchars($new->getId()) .
-                            '"><strong style="margin-left: 20px; color: red"><i class="fas fa-times-circle fa-1x"></i></strong></a>';
+                            '"><strong style="margin-left: 20px; color: red"><i title="Supprimer la news" class="fas fa-times-circle fa-1x"></i></strong></a>';
                     }
                 }
                 ?> <br/>

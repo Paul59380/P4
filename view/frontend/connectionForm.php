@@ -19,12 +19,11 @@ include('sectionForm.php');
         </p>
 
         <p>
-            <input type="submit" name="send" value="S'inscrire" required/>
-            <input type="submit" name="verify" value="S'identifier" required/>
+            <input type="submit" name="send" value="S'inscrire"/>
+            <input type="submit" name="verify" value="S'identifier"/>
         </p>
     </form>
 </div>
-
 
 <?php
 $content = ob_get_clean();

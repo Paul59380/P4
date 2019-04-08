@@ -18,4 +18,5 @@ class PDOFactory  //Pattern Factory // Test
         return $db;
     }
 }
-//http://projet-4.paul-projets-opc.com/view/connexion.php
+//http://projet-4.paul-projets-opc.com
+//mysql:host=db5000039623.hosting-data.io;dbname=dbs34584;charset=utf8', 'dbu83477', 'Rodius007'

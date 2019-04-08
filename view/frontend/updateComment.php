@@ -5,8 +5,8 @@ include('sectionComment.php');
 
 <fieldset id="reported_comment">
     <legend>De : <strong style="color:red"><?= htmlspecialchars($reportedComment->getOriginalComment()->getUser()->getPseudo()) ?> </strong>
-        Signalé le : <strong><?= $reportedComment->getReportingDate() ?></legend>
-    <br/></strong>
+        Signalé le : <strong><?= $reportedComment->getReportingDate() ?></strong></legend>
+    <br/>
     <p id="descriptComment">
         <?= htmlspecialchars($reportedComment->getOriginalComment()->getUser()->getPseudo()) ?> <br/>
         <?= $reportedComment->getReportingDate() ?>

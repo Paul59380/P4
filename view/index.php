@@ -18,7 +18,6 @@ if (!isset($_GET['action'])) {
     $getComments = CommentController::getInstance();
     $getComments->getComments();
 } elseif ($_GET['action'] == "addComment" && isset($_GET['id']) && isset($_GET['idUser'])) {
-    echo "hello";
     $controller = CommentController::getInstance();
     $addComment = $controller->addComment($_GET['idUser'], $_GET['id'], $_POST['textAddComment']);
     header('Location:index.php?action=getComments&news=' . $_GET['id']);
@@ -102,7 +101,7 @@ if (!isset($_GET['action'])) {
             $controller->createAccount();
             $controller->userAccount($userManager);
         } else {
-            echo "<p class='error'>Ce personnage existe déjà !</p>";
+            echo "<p class='error'>Ce pseudo existe déjà !</p>";
         }
     } elseif (!empty($_POST['pseudo']) && empty($_POST['password']) && isset($_POST['send'])) {
         if (!$controller->userManager->exists($_POST['pseudo'])) {
@@ -115,6 +114,8 @@ if (!isset($_GET['action'])) {
     } elseif (!empty($_POST['pseudo']) && !empty($_POST['password']) && isset($_POST['verify'])) {
         try {
             $controller->userAccount($userManager);
+            echo '<script>document.location.href="index.php"</script>';
+
         } catch (Exception $e) {
             echo('<p class="error" ">Erreur : ' . $e->getMessage() . '</p>');
         }
@@ -123,20 +124,9 @@ if (!isset($_GET['action'])) {
             if ($_POST['password'] == "") {
                 $controller->visitorAccount($userManager);
             }
+            echo '<script>document.location.href="index.php"</script>';
         } catch (Exception $e) {
             echo('<p class="error" ">Erreur : ' . $e->getMessage() . '</p>');
         }
     }
 }
-
-
-
-
-
-
-/*
- * else {
-    // redirect 404
-}
- */
-
